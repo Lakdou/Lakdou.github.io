@@ -2512,9 +2512,11 @@ class WorldScene {
     const type = half ? T.HalfFloatType : T.UnsignedByteType;
     const base = { type, format: T.RGBAFormat, minFilter: T.LinearFilter, magFilter: T.LinearFilter, depthBuffer: false, stencilBuffer: false, generateMipmaps: false };
     const samples = this.lite || window.__lkNoMSAA ? 0 : 4;
-    this.sceneRT = samples && T.WebGLMultisampleRenderTarget ? new T.WebGLMultisampleRenderTarget(4, 4, { ...base, depthBuffer: true }) : new T.WebGLRenderTarget(4, 4, { ...base, depthBuffer: true });
+    // stencil on purpose: three r128 gives targets without stencil a 16-bit depth buffer, which flickers at a distance;
+    // depth + stencil means 24-bit depth
+    this.sceneRT = samples && T.WebGLMultisampleRenderTarget ? new T.WebGLMultisampleRenderTarget(4, 4, { ...base, depthBuffer: true, stencilBuffer: true }) : new T.WebGLRenderTarget(4, 4, { ...base, depthBuffer: true, stencilBuffer: true });
     if (this.sceneRT.isWebGLMultisampleRenderTarget) this.sceneRT.samples = samples;
-    this.reflRT = new T.WebGLRenderTarget(4, 4, { ...base, depthBuffer: true, minFilter: T.LinearMipmapLinearFilter, generateMipmaps: true });
+    this.reflRT = new T.WebGLRenderTarget(4, 4, { ...base, depthBuffer: true, stencilBuffer: true, minFilter: T.LinearMipmapLinearFilter, generateMipmaps: true });
     this.bloomRT = [];
     for (let i = 0; i < (this.lite ? 5 : 6); i++) this.bloomRT.push(new T.WebGLRenderTarget(4, 4, base));
     this.reflCam = new T.PerspectiveCamera(56, 1, 0.3, 7000);
@@ -2748,9 +2750,14 @@ class WorldScene {
         float walk = max(max(aveWalk * (1.0 - cross), crossWalk), gridWalk) * (1.0 - road) * (1.0 - plaza);
         float near = 1.0 - smoothstep(30.0, 140.0, dist);
         float fade = 1.0 - smoothstep(70.0, 240.0, dist);
+        // size of a pixel on the ground: detail finer than that would shimmer as the camera moves, so it fades out
+        vec2 fwp = fwidth(p); float fwg = max(fwp.x, fwp.y);
+        float aaFine = 1.0 - smoothstep(0.02, 0.07, fwg);
+        float aaMid = 1.0 - smoothstep(0.15, 0.45, fwg);
+        float aaRip = 1.0 - smoothstep(0.005, 0.018, fwg);
         // asphalt: dark, with grain, patches and tar seams
         float n1 = vnoise(p * 0.7), n2 = vnoise(p * 3.1), n3 = vnoise(p * 13.0);
-        float grain = (n1 * 0.5 + n2 * 0.3 + n3 * 0.2 * near);
+        float grain = (n1 * 0.5 + n2 * 0.3 * aaMid + n3 * 0.2 * near * aaFine);
         vec3 col = mix(vec3(0.014, 0.013, 0.026), vec3(0.02, 0.019, 0.036), road) * (0.75 + 0.5 * grain);
         float patchy = smoothstep(0.55, 0.62, vnoise(p * 0.11 + 4.0));
         col *= 1.0 - patchy * 0.25 * road;
@@ -2811,14 +2818,14 @@ class WorldScene {
         vec3 refl;
         if (uReflOn > 0.5) {
           // fine grain of the asphalt breaks the reflection up; puddles stay almost mirror-flat
-          vec2 slope = vec2(n3 - 0.5, vnoise(p * 13.0 + 31.0) - 0.5) * 0.014 * (1.0 - pud * 0.8) * near;
-          slope += vec2(vnoise(p * 2.2) - 0.5, vnoise(p * 2.2 + 9.0) - 0.5) * 0.006 * (1.0 - pud);
-          float ripK = near * uRain * (0.3 + 0.7 * pud);
+          vec2 slope = vec2(n3 - 0.5, vnoise(p * 13.0 + 31.0) - 0.5) * 0.014 * (1.0 - pud * 0.8) * near * aaFine;
+          slope += vec2(vnoise(p * 2.2) - 0.5, vnoise(p * 2.2 + 9.0) - 0.5) * 0.006 * (1.0 - pud) * aaMid;
+          float ripK = near * uRain * (0.3 + 0.7 * pud) * aaRip;
           if (ripK > 0.01) slope += ripples(p, uTime) * 0.016 * ripK;
           vec4 rp = uReflMat * vec4(vW, 1.0);
           vec2 ruv = rp.xy / rp.w + slope * vec2(0.45, 0.9);
           float rough = mix(0.6, 0.05, pud) * mix(1.0, 0.8, walk);
-          float lod = rough * 3.6;
+          float lod = max(rough * 3.6, 0.7) + smoothstep(25.0, 140.0, dist) * 1.2;
           float st = rough * 0.03 + 0.0015;
           refl = texture2D(uRefl, ruv, lod).rgb * 0.36;
           refl += texture2D(uRefl, ruv + vec2(0.0, st), lod).rgb * 0.22;
