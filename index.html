@@ -20,8 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Chakra+Petch:wght@500;600;700&amp;family=Dela+Gothic+One&amp;family=Tilt+Neon&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&amp;text=%E3%83%A9%E3%82%AF%E3%83%80%E3%83%AB%E3%81%AE%E4%B8%96%E7%95%8C%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E7%B5%8C%E6%AD%B4%E3%82%B8%E3%82%A7%E3%83%88%E6%8A%80%E8%A1%93%E9%80%A3%E7%B5%A1%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E4%BF%A1%E5%8F%B7%E7%99%BB%E7%AB%9C%E9%96%80%E7%A1%9D%E5%AD%90%E6%84%9F%E6%83%85%E6%8B%B3%E6%9C%AA%E6%9D%A5%E9%81%93%E7%B7%9A&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Chakra+Petch:wght@500;600;700&amp;family=Dela+Gothic+One&amp;family=Kanit:wght@500;600&amp;family=Tilt+Neon&amp;display=swap">
 <style>
 :root {
   /* Layout: the opener is the city itself, full-bleed and alive; below it the page walks down the street, each section lit like a sign in the night. */
@@ -42,7 +41,8 @@
   --font-ui: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
   --font-body: "Barlow", "Segoe UI", system-ui, sans-serif;
   --font-jp: "Dela Gothic One", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
-  --font-jp-ui: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Dela Gothic One", sans-serif;
+  /* the small accents next to the headings are Thai now (Chakra Petch has a Thai design) */
+  --font-jp-ui: "Chakra Petch", "Kanit", "Noto Sans Thai", "Leelawadee UI", "Thonburi", sans-serif;
   --gutter: clamp(16px, 5vw, 72px);
   color-scheme: dark;
 }
@@ -67,7 +67,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 .nav.is-scrolled { background: rgba(7, 7, 32, 0.74); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 1px 0 var(--line); }
 .brand { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; text-decoration: none; color: var(--ink); }
 .brand-mark { font: 400 28px/1 var(--font-neon); color: #fff3fd; text-shadow: 0 0 4px #fff, 0 0 12px var(--pink), 0 0 26px rgba(255, 63, 208, 0.7); }
-.brand-jp { font: 700 12px/1 var(--font-jp-ui); letter-spacing: 0.2em; color: var(--cyan); }
+.brand-jp { font: 700 13px/1.2 var(--font-jp-ui); letter-spacing: 0.06em; color: var(--cyan); }
 .links { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); }
 .links a { position: relative; padding: 8px 0; font: 600 13px/1 var(--font-ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
 .links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; height: 2px; background: var(--pink); box-shadow: 0 0 10px var(--pink); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
@@ -84,7 +84,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 
 .menu { position: fixed; inset: 0; z-index: 45; display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: calc(96px + env(safe-area-inset-top, 0px)) var(--gutter) calc(40px + env(safe-area-inset-bottom, 0px)); background: rgba(7, 7, 32, 0.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .menu a { font: 400 clamp(38px, 11vw, 56px)/1.2 var(--font-neon); color: #fff3fd; text-decoration: none; text-shadow: 0 0 6px #fff, 0 0 16px var(--pink); }
-.menu a .jp { margin-left: 12px; font-size: 14px; letter-spacing: 0.2em; color: var(--cyan); text-shadow: none; vertical-align: middle; }
+.menu a .jp { margin-left: 12px; font-size: 15px; letter-spacing: 0.04em; color: var(--cyan); text-shadow: none; vertical-align: middle; }
 
 @media (max-width: 860px) {
   .links { display: none; }
@@ -102,7 +102,7 @@ html.gated .nav { opacity: 0; pointer-events: none; }
 .gate-veil { position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 52%, rgba(7, 7, 32, 0.28), rgba(7, 7, 32, 0.72) 75%, rgba(7, 7, 32, 0.9)), linear-gradient(180deg, rgba(7, 7, 32, 0.55), rgba(7, 7, 32, 0) 30%, rgba(7, 7, 32, 0) 70%, rgba(7, 7, 32, 0.7)); }
 .gate-lang { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); right: var(--gutter); z-index: 2; }
 .gate-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 2.4vh, 22px); max-width: 820px; }
-.gate-jp { margin: 0; font: 700 15px/1 var(--font-jp-ui); letter-spacing: 0.5em; color: var(--pink); text-shadow: 0 0 14px rgba(255, 63, 208, 0.7); }
+.gate-jp { margin: 0; font: 700 17px/1.3 var(--font-jp-ui); letter-spacing: 0.06em; color: var(--pink); text-shadow: 0 0 14px rgba(255, 63, 208, 0.7); }
 .gate-l1 { --glow: 0 0 2px #fff, 0 0 10px #ff7fe4, 0 0 26px var(--pink), 0 0 60px rgba(255, 63, 208, 0.55); margin: 0; font: 400 clamp(30px, 5vw, 64px)/1.12 var(--font-neon); color: #fff3fd; text-shadow: var(--glow); text-wrap: balance; }
 .gate-l1 b { font-weight: 400; color: #eaffff; text-shadow: 0 0 2px #fff, 0 0 12px var(--cyan), 0 0 30px rgba(53, 230, 255, 0.7); font-variant-numeric: tabular-nums; }
 .gate-l2 { margin: 0; font: 500 clamp(18px, 1.9vw, 24px)/1.4 var(--font-body); color: #dcdcf8; text-shadow: 0 2px 16px rgba(6, 6, 28, 0.95); }
@@ -140,7 +140,7 @@ html.gated .nav { opacity: 0; pointer-events: none; }
 .city canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
 .world-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 50%, rgba(7, 7, 32, 0) 55%, rgba(7, 7, 32, 0.55) 100%), linear-gradient(0deg, rgba(7, 7, 32, 0.6), rgba(7, 7, 32, 0) 18%); }
 .chap-hud { position: absolute; z-index: 3; right: max(10px, calc(var(--gutter) * 0.4)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: flex-end; gap: 12px; transition: opacity 0.6s; }
-.chap-hud a { display: flex; align-items: center; gap: 10px; padding: 3px 0; text-decoration: none; color: var(--ink-3); font: 700 12px/1 var(--font-jp-ui); letter-spacing: 0.22em; }
+.chap-hud a { display: flex; align-items: center; gap: 10px; padding: 3px 0; text-decoration: none; color: var(--ink-3); font: 700 13px/1.25 var(--font-jp-ui); letter-spacing: 0.04em; }
 .chap-hud a i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid rgba(242, 240, 255, 0.45); transition: background-color 0.4s, box-shadow 0.4s, transform 0.3s; }
 .chap-hud a span { opacity: 0; transform: translateX(6px); transition: opacity 0.3s, transform 0.3s; text-shadow: 0 0 10px rgba(7, 7, 32, 0.9); }
 .chap-hud a.on i { background: var(--pink); border-color: var(--pink); box-shadow: 0 0 10px var(--pink); }
@@ -170,7 +170,7 @@ html:not(.landed) .chap-hud, html:not(.landed) .skip-story, .world-stage.at-hero
 .beat-kicker { margin: 0 0 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font: 700 12px/1 var(--font-ui); letter-spacing: 0.3em; text-transform: uppercase; color: var(--pink); }
 .beat[data-side="c"] .beat-kicker { justify-content: center; }
 .beat-kicker b { font: 400 26px/1 var(--font-neon); letter-spacing: 0.04em; color: #fff3fd; text-shadow: 0 0 3px #fff, 0 0 12px var(--pink), 0 0 26px rgba(255, 63, 208, 0.6); }
-.beat-kicker .jp { font-size: 15px; letter-spacing: 0.24em; color: var(--cyan); text-shadow: 0 0 12px rgba(53, 230, 255, 0.6); }
+.beat-kicker .jp { font-size: 16px; letter-spacing: 0.04em; color: var(--cyan); text-shadow: 0 0 12px rgba(53, 230, 255, 0.6); }
 .beat-title { margin: 0 0 18px; font: 700 clamp(30px, 3.5vw, 50px)/1.08 var(--font-ui); letter-spacing: -0.01em; color: #fff; text-wrap: balance; text-shadow: 0 2px 26px rgba(6, 6, 28, 0.95); }
 .beat-home .beat-title, .beat-end .beat-title { --glow: 0 0 2px #fff, 0 0 10px #ff7fe4, 0 0 24px var(--pink), 0 0 54px rgba(255, 63, 208, 0.6); font: 400 clamp(38px, 6vw, 84px)/1.05 var(--font-neon); color: #fff3fd; text-shadow: var(--glow); }
 .beat-text { margin: 0; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.68; color: #dedff9; text-shadow: 0 1px 14px rgba(6, 6, 28, 0.95); }
@@ -189,7 +189,7 @@ html:not(.landed) .chap-hud, html:not(.landed) .skip-story, .world-stage.at-hero
 .hero-scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(6, 6, 28, 0.86) 0%, rgba(6, 6, 28, 0.6) 30%, rgba(6, 6, 28, 0.15) 52%, rgba(6, 6, 28, 0) 64%), linear-gradient(0deg, rgba(7, 7, 32, 0.8) 0%, rgba(7, 7, 32, 0.35) 12%, rgba(7, 7, 32, 0) 24%); }
 .hero-copy { position: absolute; z-index: 2; left: var(--gutter); right: var(--gutter); top: 50%; max-width: 760px; display: flex; flex-direction: column; gap: 18px; transform: translateY(-46%); pointer-events: auto; }
 .eyebrow { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font: 600 13px/1.2 var(--font-ui); letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); }
-.eyebrow .jp { letter-spacing: 0.22em; color: var(--pink); text-shadow: 0 0 12px rgba(255, 63, 208, 0.6); }
+.eyebrow .jp { letter-spacing: 0.06em; color: var(--pink); text-shadow: 0 0 12px rgba(255, 63, 208, 0.6); }
 .neon-title { --glow: 0 0 2px #fff, 0 0 9px #ff7fe4, 0 0 22px var(--pink), 0 0 46px rgba(255, 63, 208, 0.75), 0 0 96px rgba(255, 63, 208, 0.42); margin: 0; font: 400 clamp(44px, min(15vw, 15.5vh), 132px)/1 var(--font-neon); letter-spacing: 0.01em; color: #fff3fd; text-shadow: var(--glow); }
 .landed .neon-title { animation: powerOn 1.6s 0.15s both; }
 .neon-title span { display: inline-block; }
@@ -264,7 +264,7 @@ main { position: relative; isolation: isolate; }
 .sec-head { display: grid; gap: 16px; max-width: 880px; margin-bottom: clamp(36px, 5vw, 64px); }
 .kicker { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; font: 700 13px/1 var(--font-ui); letter-spacing: 0.3em; text-transform: uppercase; color: var(--pink); }
 .kicker::before { content: ""; width: 34px; height: 2px; background: var(--pink); box-shadow: 0 0 10px var(--pink); }
-.kicker .jp { font-size: 13px; letter-spacing: 0.24em; color: var(--cyan); }
+.kicker .jp { font-size: 15px; letter-spacing: 0.04em; color: var(--cyan); }
 h2 { margin: 0; font: 700 clamp(34px, 5.2vw, 64px)/1.05 var(--font-ui); letter-spacing: -0.01em; text-wrap: balance; }
 h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 255, 0.9), 0 0 26px rgba(53, 230, 255, 0.55); }
 .lead { margin: 0; max-width: 40em; font-size: clamp(17px, 1.4vw, 20px); color: var(--ink-2); }
@@ -345,7 +345,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 .metro .pulse { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
 .metro .cart { fill: rgba(7, 7, 32, 0.72); stroke: rgba(161, 140, 240, 0.35); stroke-width: 1; }
 .metro .cart-t { fill: var(--ink); font: 700 13px var(--font-ui); letter-spacing: 0.22em; }
-.metro .cart-s { fill: var(--ink-3); font: 600 11px var(--font-ui); letter-spacing: 0.16em; }
+.metro .cart-s { fill: var(--ink-3); font: 600 12px var(--font-ui); letter-spacing: 0.04em; }
 .metro .cart-l { fill: var(--ink-2); font: 500 13px var(--font-body); }
 .metro .name-t { fill: var(--ink-2); font: 500 15px var(--font-body); }
 .metro .pill-t { font: 700 11px var(--font-ui); letter-spacing: 0.08em; }
@@ -399,7 +399,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
   <div class="gate-veil" aria-hidden="true"></div>
   <button class="lang gate-lang" type="button" data-lang-toggle aria-label="Switch to English"><span data-v="fr" class="on">FR</span>/<span data-v="en">EN</span></button>
   <div class="gate-inner">
-    <p class="gate-jp" lang="ja">ラクダルの世界</p>
+    <p class="gate-jp" lang="th">โลกของลักดาร์</p>
     <p class="gate-l1" id="gate-l1"><span data-l="fr">Il est <b data-time-fr>20 h 39</b> à Paris.<br>Il pleut sur ma ville.</span><span data-l="en" lang="en">It's <b data-time-en>8:39 pm</b> in Paris.<br>Rain is falling on my city.</span></p>
     <p class="gate-l2"><span data-l="fr">Entrez. Je vous fais visiter.</span><span data-l="en" lang="en">Come in. Let me show you around.</span></p>
     <div class="gate-actions">
@@ -412,7 +412,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 </div>
 
 <header class="nav" id="top-nav">
-  <a class="brand" href="#top" aria-label="Lakdar Karabadja"><span class="brand-mark">LK</span><span class="brand-jp" lang="ja">ラクダル</span></a>
+  <a class="brand" href="#top" aria-label="Lakdar Karabadja"><span class="brand-mark">LK</span><span class="brand-jp" lang="th">ลักดาร์</span></a>
   <nav class="links" aria-label="Sections">
     <a href="#profil"><span data-l="fr">Profil</span><span data-l="en" lang="en">About</span></a>
     <a href="#parcours"><span data-l="fr">Parcours</span><span data-l="en" lang="en">Experience</span></a>
@@ -429,11 +429,11 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 </header>
 
 <div class="menu" id="menu" hidden>
-  <a href="#profil"><span data-l="fr">Profil</span><span data-l="en" lang="en">About</span><span class="jp" lang="ja">プロフィール</span></a>
-  <a href="#parcours"><span data-l="fr">Parcours</span><span data-l="en" lang="en">Experience</span><span class="jp" lang="ja">経歴</span></a>
-  <a href="#projets"><span data-l="fr">Projets</span><span data-l="en" lang="en">Projects</span><span class="jp" lang="ja">プロジェクト</span></a>
-  <a href="#stack">Stack<span class="jp" lang="ja">技術</span></a>
-  <a href="#contact">Contact<span class="jp" lang="ja">連絡</span></a>
+  <a href="#profil"><span data-l="fr">Profil</span><span data-l="en" lang="en">About</span><span class="jp" lang="th">โปรไฟล์</span></a>
+  <a href="#parcours"><span data-l="fr">Parcours</span><span data-l="en" lang="en">Experience</span><span class="jp" lang="th">ประสบการณ์</span></a>
+  <a href="#projets"><span data-l="fr">Projets</span><span data-l="en" lang="en">Projects</span><span class="jp" lang="th">โปรเจกต์</span></a>
+  <a href="#stack">Stack<span class="jp" lang="th">เทคโนโลยี</span></a>
+  <a href="#contact">Contact<span class="jp" lang="th">ติดต่อ</span></a>
 </div>
 
 <main id="top">
@@ -447,15 +447,15 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
       </div>
       <div class="world-shade" aria-hidden="true"></div>
       <nav class="chap-hud" id="chap-hud" aria-label="Chapitres">
-        <a href="#ch-0" data-k="0" aria-label="Bienvenue"><span lang="ja">ようこそ</span><i></i></a>
-        <a href="#ch-1" data-k="1" aria-label="01"><span lang="ja">信号</span><i></i></a>
-        <a href="#ch-2" data-k="2" aria-label="02"><span lang="ja">登竜門</span><i></i></a>
-        <a href="#ch-3" data-k="3" aria-label="03"><span lang="ja">硝子</span><i></i></a>
-        <a href="#ch-4" data-k="4" aria-label="04"><span lang="ja">感情</span><i></i></a>
-        <a href="#ch-5" data-k="5" aria-label="05"><span lang="ja">拳</span><i></i></a>
-        <a href="#ch-6" data-k="6" aria-label="06"><span lang="ja">未来</span><i></i></a>
-        <a href="#ch-7" data-k="7" aria-label="07"><span lang="ja">ラクダル</span><i></i></a>
-        <a href="#ch-8" data-k="8" aria-label="08"><span lang="ja">道</span><i></i></a>
+        <a href="#ch-0" data-k="0" aria-label="Bienvenue"><span lang="th">สวัสดี</span><i></i></a>
+        <a href="#ch-1" data-k="1" aria-label="01"><span lang="th">สัญญาณ</span><i></i></a>
+        <a href="#ch-2" data-k="2" aria-label="02"><span lang="th">น้ำตก</span><i></i></a>
+        <a href="#ch-3" data-k="3" aria-label="03"><span lang="th">กระจก</span><i></i></a>
+        <a href="#ch-4" data-k="4" aria-label="04"><span lang="th">ความรู้สึก</span><i></i></a>
+        <a href="#ch-5" data-k="5" aria-label="05"><span lang="th">นอกจอ</span><i></i></a>
+        <a href="#ch-6" data-k="6" aria-label="06"><span lang="th">อนาคต</span><i></i></a>
+        <a href="#ch-7" data-k="7" aria-label="07"><span lang="th">ลักดาร์</span><i></i></a>
+        <a href="#ch-8" data-k="8" aria-label="08"><span lang="th">เส้นทาง</span><i></i></a>
       </nav>
       <p class="look-hint" id="look-hint" aria-hidden="true"><i></i><span class="lh-mouse"><span data-l="fr">Bougez la souris pour regarder autour</span><span data-l="en" lang="en">Move your mouse to look around</span></span><span class="lh-touch"><span data-l="fr">Glissez pour regarder autour</span><span data-l="en" lang="en">Swipe to look around</span></span></p>
       <a class="skip-story" href="#profil"><span data-l="fr">Passer l'histoire</span><span data-l="en" lang="en">Skip the story</span> ↓</a>
@@ -465,7 +465,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
       <header class="beat beat-hero" id="ch-0" data-k="0">
         <div class="hero-scrim" aria-hidden="true"></div>
         <div class="hero-copy" id="hero-copy">
-          <p class="eyebrow"><span class="jp" lang="ja">ラクダル</span><span>Portfolio 2026</span></p>
+          <p class="eyebrow"><span class="jp" lang="th">ลักดาร์</span><span>Portfolio 2026</span></p>
           <h1 class="neon-title" id="hero-title" aria-label="Lakdar Karabadja"><span class="ln" aria-hidden="true"><span>L</span><span>a</span><span>k</span><span class="flick">d</span><span>a</span><span>r</span></span><span class="ln" aria-hidden="true"><span>K</span><span>a</span><span>r</span><span>a</span><span class="flick-2">b</span><span>a</span><span>d</span><span>j</span><span>a</span></span></h1>
           <p class="role"><span class="sr-only">Machine Learning Engineer, Data Engineer, Data Analyst</span><span class="role-rot" id="role-rot" aria-hidden="true">Machine Learning Engineer · MLOps &amp; Data</span></p>
           <p class="welcome"><span data-l="fr">Bienvenue dans mon monde.<br>Prenez le temps de regarder autour de vous.</span><span data-l="en" lang="en">Welcome to my world.<br>Take a moment to look around.</span></p>
@@ -482,7 +482,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat" id="ch-1" data-k="1" data-side="r">
         <div class="beat-card">
-          <p class="beat-kicker"><b>01</b><span class="jp" lang="ja">信号</span><span data-l="fr">Le signal</span><span data-l="en" lang="en">The signal</span></p>
+          <p class="beat-kicker"><b>01</b><span class="jp" lang="th">สัญญาณ</span><span data-l="fr">Le signal</span><span data-l="en" lang="en">The signal</span></p>
           <h2 class="beat-title"><span data-l="fr">La nuit, une ville, c'est des millions de signaux.</span><span data-l="en" lang="en">At night, a city is a million signals.</span></h2>
           <p class="beat-text"><span data-l="fr">Une fenêtre qui s'allume. Une enseigne qui grésille. Un train qui passe à l'heure, ou pas. La plupart des gens n'y voient que du bruit. Moi, j'y cherche l'histoire. C'est ça, mon métier&nbsp;: <em>faire parler les données</em>.</span><span data-l="en" lang="en">A window lights up. A sign buzzes. A train runs on time, or doesn't. Most people only see noise. I look for the story in it. That's my job: <em>making data speak</em>.</span></p>
         </div>
@@ -490,7 +490,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat" id="ch-2" data-k="2" data-side="l">
         <div class="beat-card">
-          <p class="beat-kicker"><b>02</b><span class="jp" lang="ja">登竜門</span><span data-l="fr">La cascade</span><span data-l="en" lang="en">The waterfall</span></p>
+          <p class="beat-kicker"><b>02</b><span class="jp" lang="th">น้ำตก</span><span data-l="fr">La cascade</span><span data-l="en" lang="en">The waterfall</span></p>
           <h2 class="beat-title"><span data-l="fr">Je n'ai pas commencé par l'intelligence artificielle.</span><span data-l="en" lang="en">I didn't start with artificial intelligence.</span></h2>
           <p class="beat-text"><span data-l="fr">J'ai commencé en alternance, au support informatique. Puis chef de projet. Puis data analyst chez Saint-Gobain, avec un master de machine learning en parallèle. Une marche après l'autre. Une vieille légende raconte que la carpe qui remonte la cascade finit par devenir dragon. <em>Je continue de remonter.</em></span><span data-l="en" lang="en">I started as a work-study IT assistant. Then project manager. Then data analyst at Saint-Gobain, with a machine learning master's alongside. One step at a time. An old legend says the carp that swims up the waterfall becomes a dragon. <em>I'm still swimming.</em></span></p>
         </div>
@@ -498,7 +498,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat" id="ch-3" data-k="3" data-side="r">
         <div class="beat-card">
-          <p class="beat-kicker"><b>03</b><span class="jp" lang="ja">硝子</span><span data-l="fr">Le verre</span><span data-l="en" lang="en">Glass</span></p>
+          <p class="beat-kicker"><b>03</b><span class="jp" lang="th">กระจก</span><span data-l="fr">Le verre</span><span data-l="en" lang="en">Glass</span></p>
           <h2 class="beat-title"><span data-l="fr">Derrière chaque tableau de bord, il y a des gens.</span><span data-l="en" lang="en">Behind every dashboard, there are people.</span></h2>
           <p class="beat-text"><span data-l="fr">Trois ans chez Saint-Gobain, dont deux dans le pôle Glass. Des usines aux quatre coins du monde, des fours qui ne s'éteignent jamais. Quand je construis un indicateur, je pense à celui qui devra décider avec. <em>Il mérite des chiffres justes, clairs, et à l'heure.</em></span><span data-l="en" lang="en">Three years at Saint-Gobain, two of them in the Glass division. Plants all over the world, furnaces that never go out. When I build a metric, I think of whoever will have to decide with it. <em>They deserve numbers that are right, clear and on time.</em></span></p>
         </div>
@@ -506,7 +506,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat" id="ch-4" data-k="4" data-side="l">
         <div class="beat-card">
-          <p class="beat-kicker"><b>04</b><span class="jp" lang="ja">感情</span><span data-l="fr">Ce qu'on ressent</span><span data-l="en" lang="en">Feelings</span></p>
+          <p class="beat-kicker"><b>04</b><span class="jp" lang="th">ความรู้สึก</span><span data-l="fr">Ce qu'on ressent</span><span data-l="en" lang="en">Feelings</span></p>
           <h2 class="beat-title"><span data-l="fr">J'ai appris à une machine à lire ce que les gens ressentent.</span><span data-l="en" lang="en">I taught a machine to read what people feel.</span></h2>
           <p class="beat-text"><span data-l="fr">Des milliers d'avis clients, écrits dans la joie, la colère ou la déception. SentimentAI les lit, les comprend, et lève la main quand le monde change. Parce qu'<em>un modèle qui n'écoute plus finit toujours par se tromper</em>.</span><span data-l="en" lang="en">Thousands of customer reviews, written in joy, anger or disappointment. SentimentAI reads them, understands them, and raises its hand when the world changes. Because <em>a model that stops listening always ends up wrong</em>.</span></p>
         </div>
@@ -514,7 +514,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat" id="ch-5" data-k="5" data-side="c" data-pos="low">
         <div class="beat-card">
-          <p class="beat-kicker"><b>05</b><span class="jp" lang="ja">拳</span><span data-l="fr">Hors écran</span><span data-l="en" lang="en">Off screen</span></p>
+          <p class="beat-kicker"><b>05</b><span class="jp" lang="th">นอกจอ</span><span data-l="fr">Hors écran</span><span data-l="en" lang="en">Off screen</span></p>
           <h2 class="beat-title"><span data-l="fr">Et quand l'écran s'éteint…</span><span data-l="en" lang="en">And when the screen goes dark…</span></h2>
           <p class="beat-text"><span data-l="fr">Il y a la boxe, qui apprend à encaisser et à se relever. Les livres, qui apprennent à écouter. Les animaux, qui apprennent la patience. <em>Couper le signal, c'est aussi comme ça qu'on l'entend mieux.</em></span><span data-l="en" lang="en">There's boxing, which teaches you to take a hit and get back up. Books, which teach you to listen. Animals, which teach you patience. <em>Switching the signal off is also how you hear it better.</em></span></p>
         </div>
@@ -522,7 +522,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat" id="ch-6" data-k="6" data-side="l">
         <div class="beat-card">
-          <p class="beat-kicker"><b>06</b><span class="jp" lang="ja">未来</span><span data-l="fr">Demain</span><span data-l="en" lang="en">Tomorrow</span></p>
+          <p class="beat-kicker"><b>06</b><span class="jp" lang="th">อนาคต</span><span data-l="fr">Demain</span><span data-l="en" lang="en">Tomorrow</span></p>
           <h2 class="beat-title"><span data-l="fr">Aujourd'hui, je construis des systèmes qui tiennent debout.</span><span data-l="en" lang="en">Today, I build systems that hold up.</span></h2>
           <p class="beat-text"><span data-l="fr">De la donnée brute au modèle en production&nbsp;: surveillé, documenté, fiable. Je cherche une équipe où la donnée sert vraiment à quelque chose, et où <em>les gens comptent autant que les modèles</em>.</span><span data-l="en" lang="en">From raw data to a model in production: monitored, documented, reliable. I'm looking for a team where data truly serves a purpose, and where <em>people matter as much as models</em>.</span></p>
         </div>
@@ -530,14 +530,14 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
 
       <article class="beat beat-home" id="ch-7" data-k="7" data-side="c">
         <div class="beat-card">
-          <p class="beat-kicker"><b>07</b><span class="jp" lang="ja">ラクダル</span><span data-l="fr">Chez moi</span><span data-l="en" lang="en">Home</span></p>
+          <p class="beat-kicker"><b>07</b><span class="jp" lang="th">ลักดาร์</span><span data-l="fr">Chez moi</span><span data-l="en" lang="en">Home</span></p>
           <h2 class="beat-title"><span data-l="fr">Ici, c'est chez moi.</span><span data-l="en" lang="en">This is home.</span></h2>
         </div>
       </article>
 
       <article class="beat beat-end" id="ch-8" data-k="8" data-side="c">
         <div class="beat-card">
-          <p class="beat-kicker"><span class="jp" lang="ja">道</span><span data-l="fr">Le chemin</span><span data-l="en" lang="en">The road</span></p>
+          <p class="beat-kicker"><span class="jp" lang="th">เส้นทาง</span><span data-l="fr">Le chemin</span><span data-l="en" lang="en">The road</span></p>
           <h2 class="beat-title"><span data-l="fr">Retournez-vous. Regardez le chemin parcouru.</span><span data-l="en" lang="en">Turn around. Look at the road behind you.</span></h2>
           <p class="beat-text"><span data-l="fr">Chaque enseigne que vous avez allumée en chemin, c'est un morceau de mon histoire. <em>La suite, j'aimerais l'écrire avec vous.</em></span><span data-l="en" lang="en">Every sign you lit along the way is a piece of my story. <em>What comes next, I'd like to write with you.</em></span></p>
           <div class="cta">
@@ -552,12 +552,12 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
   <section class="sec" id="profil" aria-labelledby="profil-title">
     <div class="wrap profil-grid">
       <div class="sec-head profil-head" data-reveal>
-        <p class="kicker"><span data-l="fr">Profil</span><span data-l="en" lang="en">About</span><span class="jp" lang="ja">プロフィール</span></p>
+        <p class="kicker"><span data-l="fr">Profil</span><span data-l="en" lang="en">About</span><span class="jp" lang="th">โปรไฟล์</span></p>
         <h2 id="profil-title"><span data-l="fr">De la donnée brute au modèle <em>en production</em>.</span><span data-l="en" lang="en">From raw data to models <em>in production</em>.</span></h2>
       </div>
       <figure class="street">
         <canvas id="street" aria-hidden="true"></canvas>
-        <figcaption><span data-l="fr">Rue ラクダル · 23:47 · pluie</span><span data-l="en" lang="en">ラクダル street · 11:47 pm · rain</span></figcaption>
+        <figcaption><span data-l="fr">Soi <span lang="th">ลักดาร์</span> · 23:47 · pluie</span><span data-l="en" lang="en">Soi <span lang="th">ลักดาร์</span> · 11:47 pm · rain</span></figcaption>
       </figure>
       <div class="profil-text">
         <p data-l="fr">Je m'appelle Lakdar Karabadja. J'ai passé trois ans chez <strong>Saint-Gobain</strong>, dont deux comme Data Analyst dans le pôle Glass : modèles de données SQL, pipelines ETL sur Databricks et reporting des économies de coûts pour des usines du monde entier.</p>
@@ -585,7 +585,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
   <section class="sec" id="parcours" aria-labelledby="parcours-title">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="kicker"><span data-l="fr">Parcours</span><span data-l="en" lang="en">Experience</span><span class="jp" lang="ja">経歴</span></p>
+        <p class="kicker"><span data-l="fr">Parcours</span><span data-l="en" lang="en">Experience</span><span class="jp" lang="th">ประสบการณ์</span></p>
         <h2 id="parcours-title"><span data-l="fr">Six ans en entreprise, <em>trois chez Saint-Gobain</em></span><span data-l="en" lang="en">Six years in industry, <em>three at Saint-Gobain</em></span></h2>
       </div>
       <div class="tl-grid">
@@ -652,7 +652,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
   <section class="sec" id="projets" aria-labelledby="projets-title">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="kicker"><span data-l="fr">Projets</span><span data-l="en" lang="en">Projects</span><span class="jp" lang="ja">プロジェクト</span></p>
+        <p class="kicker"><span data-l="fr">Projets</span><span data-l="en" lang="en">Projects</span><span class="jp" lang="th">โปรเจกต์</span></p>
         <h2 id="projets-title"><span data-l="fr">Ce que j'ai <em>construit</em></span><span data-l="en" lang="en">What I've <em>built</em></span></h2>
         <p class="lead"><span data-l="fr">Un pipeline MLOps complet en projet de fin d'études, et trois réalisations chez Saint-Gobain, de la donnée brute au tableau de bord.</span><span data-l="en" lang="en">A complete MLOps pipeline as my final project, and three builds at Saint-Gobain, from raw data to dashboards.</span></p>
       </div>
@@ -704,7 +704,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
   <section class="sec" id="stack" aria-labelledby="stack-title">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="kicker">Stack<span class="jp" lang="ja">技術</span></p>
+        <p class="kicker">Stack<span class="jp" lang="th">เทคโนโลยี</span></p>
         <h2 id="stack-title"><span data-l="fr">Ma stack, en <em>plan de métro</em></span><span data-l="en" lang="en">My stack, as a <em>metro map</em></span></h2>
         <p class="lead"><span data-l="fr">Quatre lignes, avec des correspondances là où les outils se croisent dans mon travail.</span><span data-l="en" lang="en">Four lines, with interchanges where the tools meet in my work.</span></p>
       </div>
@@ -738,7 +738,7 @@ h2 em { font-style: normal; color: #eaffff; text-shadow: 0 0 6px rgba(53, 230, 2
       <canvas data-layer="front"></canvas>
     </div>
     <div class="wrap contact-inner">
-      <p class="kicker">Contact<span class="jp" lang="ja">連絡</span></p>
+      <p class="kicker">Contact<span class="jp" lang="th">ติดต่อ</span></p>
       <h2 class="neon-sign" id="contact-title" data-reveal><span data-l="fr">On se parle ?</span><span data-l="en" lang="en">Let's talk</span></h2>
       <p class="lead"><span data-l="fr">Disponible immédiatement pour un poste de Machine Learning Engineer, Data Engineer ou Data Analyst, en région parisienne ou en télétravail.</span><span data-l="en" lang="en">Available now for a Machine Learning Engineer, Data Engineer or Data Analyst role, in the Paris area or remote.</span></p>
       <div class="mail">
@@ -770,7 +770,10 @@ const TAU = Math.PI * 2;
 const REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 const JP = '"Dela Gothic One", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif';
 const NEONF = '"Tilt Neon", "Chakra Petch", sans-serif';
+// Thai signage: Kanit for the neon, with system Thai faces as a fallback
+const THF = '"Kanit", "Chakra Petch", "Noto Sans Thai", "Leelawadee UI", "Thonburi", sans-serif';
 const UIF = '"Chakra Petch", "Segoe UI", sans-serif';
+const isThai = (t) => /[\u0E00-\u0E7F]/.test(t);
 const LANG = { cur: 'fr' };
 const tr = (o) => (typeof o === 'string' ? o : o[LANG.cur] || o.fr);
 
@@ -783,6 +786,7 @@ function rng(seed) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
+const smoothstep01 = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
 const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
 function mkCanvas(w, h) { const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h)); return c; }
 function rgba(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16}, ${(n >> 8) & 255}, ${n & 255}, ${a})`; }
@@ -893,7 +897,8 @@ const NEON = {
 };
 const WIN = ['#c9f7ff', '#eef1ff', '#ffc9f2', '#9edcff', '#ffe2a8'];
 const winCol = (R) => { const r = R(); return r < 0.34 ? WIN[0] : r < 0.62 ? WIN[1] : r < 0.8 ? WIN[2] : r < 0.94 ? WIN[3] : WIN[4]; };
-const VSIGNS = ['ネオン', 'カラオケ', 'ラーメン', '電脳', 'ホテル', '夜', 'バー', '酒場', '雪見', 'ゲーム'];
+// Bangkok's Chinatown: gold shops, restaurants and massage parlours in Chinese characters
+const VSIGNS = ['金行', '酒家', '飯店', '茶室', '海鮮', '福', '夜市', '按摩', '酒店', '金店'];
 const BOARD_COL = { kanji: '#ff3fd0', eq: '#35e6ff', ticker: '#ffd93f', rings: '#35e6ff', wave: '#9b6bff' };
 
 class CityScene {
@@ -1147,15 +1152,15 @@ class CityScene {
       const lw = W * 0.06;
       T(-14, lw + 14, -20);
       rim(lw, '#35e6ff', -20);
-      this.addSign(n, 'front', { kind: 'v', text: '酒場', col: NEON.pink, w: 40 * s, h: 96 * s }, lw - 10 * s, H * 0.8 - 40 * s, 'flicker');
+      this.addSign(n, 'front', { kind: 'v', text: '金行', col: NEON.yellow, w: 40 * s, h: 96 * s }, lw - 10 * s, H * 0.8 - 40 * s, 'flicker');
       const rx = W * 0.805;
       T(rx, W - rx + 16, -20);
       rim(rx, '#ff3fd0', -20);
       hband(rx, W, H * 0.105, '#35e6ff'); hband(rx, W, H * 0.118, '#35e6ff');
       this.addBoard(n, 'front', rx + W * 0.03, H * 0.2, W * 0.14, H * 0.17, R, 'eq');
-      this.addSign(n, 'front', { kind: 'v', text: 'ネオン', col: NEON.pink, w: 54 * s, h: 196 * s }, rx - 30 * s, H * 0.17, 'stutter');
+      this.addSign(n, 'front', { kind: 'v', text: '按摩', col: NEON.pink, w: 54 * s, h: 150 * s }, rx - 30 * s, H * 0.17, 'stutter');
       this.addSign(n, 'front', { kind: 'h', text: 'NEURAL BAR', col: NEON.yellow, w: W * 0.14, h: 38 * s, border: true }, rx + W * 0.03, H * 0.43, 'flicker');
-      this.addSign(n, 'front', { kind: 'v', text: '電脳', col: NEON.cyan, w: 46 * s, h: 118 * s }, W - 56 * s, H * 0.5, 'hum');
+      this.addSign(n, 'front', { kind: 'v', text: '夜市', col: NEON.cyan, w: 46 * s, h: 118 * s }, W - 56 * s, H * 0.5, 'hum');
       this.addSign(n, 'front', { kind: 'chev', col: NEON.cyan, w: 54 * s, h: 64 * s }, rx + W * 0.06, H * 0.53, 'blink');
       hband(rx, W, H * 0.66, '#ff3fd0');
       const r2x = W * 0.7, r2w = W * 0.112, r2t = H * 0.575;
@@ -1168,12 +1173,12 @@ class CityScene {
       const lw = W * 0.15;
       T(-14, lw + 14, -20, { win: [13, 11, 5, 3.4, 0.14, 0.05] });
       rim(lw, '#35e6ff', -20);
-      this.addSign(n, 'front', { kind: 'v', text: 'ラクダル', col: NEON.cyan, w: 40 * s, h: 170 * s }, lw - 12 * s, H * 0.1, 'hum');
+      this.addSign(n, 'front', { kind: 'v', text: '大金行', col: NEON.yellow, w: 40 * s, h: 136 * s }, lw - 12 * s, H * 0.1, 'hum');
       this.addBoard(n, 'front', 4, H * 0.33, lw - 8, H * 0.075, R, 'kanji');
       const rx = W * 0.84;
       T(rx, W - rx + 16, -20, { win: [13, 11, 5, 3.4, 0.14, 0.05] });
       rim(rx, '#ff3fd0', -20);
-      this.addSign(n, 'front', { kind: 'v', text: 'ネオン', col: NEON.pink, w: 40 * s, h: 136 * s }, rx - 20 * s, H * 0.19, 'stutter');
+      this.addSign(n, 'front', { kind: 'v', text: '按摩', col: NEON.pink, w: 40 * s, h: 104 * s }, rx - 20 * s, H * 0.19, 'stutter');
       this.addBoard(n, 'front', rx + 5, H * 0.07, W - rx - 8, H * 0.065, R, 'eq');
     }
   }
@@ -1294,10 +1299,11 @@ class CityScene {
       chars.forEach((ch, i) => q.fillText(ch, w / 2, lw * 3 + step * (i + 0.5)));
     } else if (sp.kind === 'h') {
       if (sp.border) q.strokeRect(lw * 1.5, lw * 1.5, w - lw * 3, h - lw * 3);
-      q.font = `100px ${NEONF}`;
+      const face = isThai(sp.text) ? `600 {px}px ${THF}` : `{px}px ${NEONF}`;
+      q.font = face.replace('{px}', 100);
       const tw100 = q.measureText(sp.text).width || 100;
-      const fs = Math.min(h * 0.66, ((w - lw * 8) / tw100) * 100);
-      q.font = `${fs.toFixed(1)}px ${NEONF}`;
+      const fs = Math.min(h * (isThai(sp.text) ? 0.56 : 0.66), ((w - lw * 8) / tw100) * 100);
+      q.font = face.replace('{px}', fs.toFixed(1));
       const tw = q.measureText(sp.text).width, x0 = (w - tw) / 2;
       q.textAlign = 'left';
       q.fillText(sp.text, x0, h / 2 + fs * 0.04);
@@ -1319,7 +1325,7 @@ class CityScene {
     const col = BOARD_COL[tp];
     ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = Math.min(w, h) * 0.35 + 6; ctx.fillStyle = rgba(col, 0.4); ctx.fillRect(x - 2, y - 2, w + 4, h + 4); ctx.restore();
     ctx.fillStyle = '#05041a'; ctx.fillRect(x - 3, y - 3, w + 6, h + 6);
-    this.boards.push({ key, x, y, w, h, type: tp, ph: R() * 10, chars: ['夜', '雪', '光', '夢', '電', '街', '愛'], text: 'SQL · DATABRICKS · MLFLOW · FASTAPI · AIRFLOW · POWER BI · ' });
+    this.boards.push({ key, x, y, w, h, type: tp, ph: R() * 10, chars: ['福', '金', '光', '夢', '雨', '街', '愛'], text: 'SQL · DATABRICKS · MLFLOW · FASTAPI · AIRFLOW · POWER BI · ' });
   }
 
   signAlpha(sg, t) {
@@ -1699,19 +1705,27 @@ const WORLD = {
   START: 430,
   PLAZA0: -1006, PLAZA1: -1102,
   HOME: [-30, 30, -1185, -1125],
+  TEMPLE: { x: 95, z: 20, r: 29 },  // a wat in a block of its own, east of the entrance: a golden chedi and four small ones
   LAMP0: 15, LAMPSTEP: 30, LAMPX: 11.6,
 };
 const WCOL = {
   pink: [1, 0.25, 0.82], cyan: [0.21, 0.9, 1], violet: [0.62, 0.44, 1], yellow: [1, 0.85, 0.28],
   blue: [0.33, 0.52, 1], red: [1, 0.3, 0.42], warm: [1, 0.74, 0.48], white: [0.9, 0.94, 1], green: [0.35, 1, 0.7],
+  sodium: [1, 0.56, 0.22],
 };
+// Bangkok: Thai shop signs, Chinatown gold-shop blades in Chinese characters, a few English and Japanese ones
 const WTXT = {
-  v: ['ネオン', 'カラオケ', 'ラーメン', '電脳', 'ホテル', '夜', 'バー', '酒場', '雪見', 'ゲーム', '寿司', '喫茶', '居酒屋', '麺', '湯', '夢', '光', '劇場', '占い', '薬局', '電気', '珈琲', '雪', '街'],
-  hj: ['ラーメン', 'カラオケ', 'ホテル', '居酒屋', 'ゲーム', '喫茶', '寿司', '酒場', '電脳'],
-  h: ['HOTEL', 'BAR', 'OPEN', 'NOODLES', 'KARAOKE', 'LIVE', 'ARCADE', '24H', 'CAFE', 'SUSHI', 'TAXI', 'NEON', 'CLUB', 'DATA', 'NIGHT', 'RAMEN', 'GAMES', 'MOTEL', 'DINER', 'LAB', 'SNOW'],
+  v: ['金行', '大金行', '金店', '酒家', '飯店', '酒店', '旅社', '茶室', '海鮮', '福', '夜市', '按摩', '茶', '食堂'],
+  vt: ['นวด|แผน|ไทย', 'ก๋วย|เตี๋ยว', 'โรง|แรม', 'คารา|โอเกะ', 'ร้าน|อาหาร', 'ตลาด|นัด', 'ส้ม|ตำ', 'ข้าว|มัน|ไก่', 'สปา', 'กาแฟ', 'ร้าน|ขาย|ยา', 'ร้าน|ทอง', 'บาร์', 'ผับ'],
+  ht: ['นวดแผนไทย', 'ก๋วยเตี๋ยว', 'โรงแรม', 'ร้านอาหาร', 'คาราโอเกะ', 'ตลาดนัด', 'ส้มตำ', 'ข้าวมันไก่', 'เปิด 24 ชม.', 'ร้านทอง', 'หมูกระทะ', 'ชาไทย', 'ผัดไทย', 'กาแฟสด'],
+  hj: ['ラーメン', '居酒屋'],
+  h: ['HOTEL', 'BAR', 'OPEN', 'MASSAGE', 'KARAOKE', 'LIVE', 'ROOFTOP', '24H', 'CAFE', 'THAI FOOD', 'TAXI', 'NEON', 'CLUB', 'DATA', 'NIGHT MARKET', 'NOODLES', 'SPA', 'GOLD', 'LAB', 'BBQ', 'RAMEN'],
 };
-// every Japanese glyph the 3D signs use, so the web font can be fetched before the atlas is drawn
-const WORLD_JP = WTXT.v.join('') + WTXT.hj.join('') + 'ようこそ信号登竜門硝子工場感情ボクシング本屋ペット未来ラクダル道';
+// the story's landmark signs
+const WLAND = { welcome: 'สวัสดี', signal: 'สัญ|ญาณ', gate: '龍門', glass: 'กระ|จก', plant: 'โรง|งาน', feel: 'ความ|รู้สึก', box: 'มวย|ไทย', books: 'ร้าน|หนัง|สือ', pets: 'สัตว์|เลี้ยง', future: 'อนาคต', home: 'ลัก|ดาร์' };
+// every glyph the 3D signs need, so the web fonts can be fetched before the atlas is drawn
+const WORLD_JP = WTXT.v.join('') + WTXT.hj.join('') + WLAND.gate;
+const WORLD_TH = [...WTXT.vt, ...WTXT.ht, ...Object.values(WLAND), 'สถานีลักดาร์'].join(' ').replace(/\|/g, ' ');
 
 let MEASURE = null;
 function textW(font, text) {
@@ -1722,7 +1736,13 @@ function textW(font, text) {
 // content size of a sign in atlas pixels (before the atlas scale) and its glow padding
 function specDims(kind, text) {
   const n = Array.from(text).length;
+  const lines = text.split('|');
+  const thW = (px) => Math.max(...lines.map((l) => textW(`600 ${px}px ${THF}`, l)));
   switch (kind) {
+    case 'ht': return { W: Math.ceil(thW(100)) + 70, H: 150, pad: 46, panel: true };
+    case 'HT': return { W: Math.ceil(thW(190)) + 130, H: 286, pad: 88, panel: true };
+    case 'vt': return { W: Math.ceil(thW(92)) + 58, H: 34 + lines.length * 128, pad: 46, panel: true };
+    case 'VT': return { W: Math.ceil(thW(176)) + 110, H: 64 + lines.length * 244, pad: 88, panel: true };
     case 'v': return { W: 120, H: 28 + n * 100, pad: 46, panel: true };
     case 'V': return { W: 220, H: 52 + n * 192, pad: 88, panel: true };
     case 'hj': return { W: 28 + n * 100, H: 120, pad: 46, panel: true };
@@ -1736,6 +1756,9 @@ function specDims(kind, text) {
 
 function worldPlan(lite) {
   const R = rng(902611);
+  // sign wording and colours draw from their own stream, so the layout of the city stays the same
+  const RS = rng(5150);
+  const cnCol = () => pick(RS, ['red', 'yellow', 'red', 'warm', 'yellow']);
   const FAC = WORLD.FAC, CROSS = WORLD.CROSS;
   const P = { B: [], S: [], halo: [], shop: [], board: [], vend: [], cable: [], vent: [], lane: [], beam: [], lamp: [], specs: {}, traffic: [] };
   const COLS = ['pink', 'cyan', 'violet', 'yellow', 'blue', 'red'];
@@ -1797,8 +1820,8 @@ function worldPlan(lite) {
     const nf = R() < 0.82 ? 1 + Math.floor(R() * 2.2) : 0;
     let yNext = 5.6;
     for (let i = 0; i < nf && yNext < h - 4; i++) {
-      const latin = R() < 0.5;
-      const k = latin ? key('h', pick(R, WTXT.h)) : key('hj', pick(R, WTXT.hj));
+      const latin = R() < 0.4, japanese = false;
+      const k = latin ? key('h', pick(R, WTXT.h)) : japanese ? key('hj', pick(R, WTXT.hj)) : key('ht', pick(R, WTXT.ht));
       const sp = P.specs[k];
       let sh = latin ? 1.5 + R() * 1.4 : 1.6 + R() * 1.2;
       let sw = sh * sp.W / sp.H;
@@ -1812,7 +1835,8 @@ function worldPlan(lite) {
     // blade signs sticking out into the street
     const nb = R() < 0.86 ? 1 + Math.floor(R() * 1.9) : 0;
     for (let i = 0; i < nb; i++) {
-      const k = key('v', pick(R, WTXT.v));
+      const chinese = RS() < 0.3;
+      const k = chinese ? key('v', pick(R, WTXT.v)) : key('vt', pick(R, WTXT.vt));
       const sp = P.specs[k];
       const bw = 1.9 + R() * 1.0, bh = bw * sp.H / sp.W;
       const yb = 4.6 + bh / 2 + R() * Math.max(0, Math.min(h - 3, 34) - bh - 4.6);
@@ -1820,7 +1844,8 @@ function worldPlan(lite) {
       const zb = z0 + 1.5 + R() * Math.max(0.1, w - 3);
       // keep the line of sight to the story's landmark signs clear
       if (side < 0 && zb < -46 && zb > -120 && yb + bh / 2 > 9) continue;
-      blade(side, k, bh, yb, zb, { halo: R() < 0.7 ? 1 : 0 });
+      const bs = blade(side, k, bh, yb, zb, { halo: R() < 0.7 ? 1 : 0 });
+      if (chinese) bs.col = cnCol();
     }
     // rooftop billboard facing the entrance
     if (h < 70 && R() < 0.3) {
@@ -1882,19 +1907,26 @@ function worldPlan(lite) {
           const Z0 = lz0 + ins, Z1 = lz1 - ins;
           if (X1 - X0 < 6 || Z1 - Z0 < 6) continue;
           const cx = (X0 + X1) / 2, cz = (Z0 + Z1) / 2;
-          // keep the plaza and the home tower clear
+          // keep the plaza and the home tower clear, and the temple grounds
           if (cz < WORLD.PLAZA0 + 8 && cz > -1200 && Math.abs(cx) < 110) continue;
+          if (Math.hypot(cx - WORLD.TEMPLE.x, cz - WORLD.TEMPLE.z) < WORLD.TEMPLE.r + 14) continue;
           const dz = district(cx, cz);
           let h = 20 + Math.pow(R(), 1.4) * 70 + dz * (110 + R() * 170);
           if (R() < 0.05) h += 90 + R() * 120;
+          // old-town height limit around the temple: low shophouses, so the chedi stands out
+          const dT = Math.hypot(cx - WORLD.TEMPLE.x, cz - WORLD.TEMPLE.z);
+          if (dT < 190) h = Math.min(h, lerp(12 + RS() * 14, h, smoothstep01(110, 190, dT)));
           const b = addB(X0, X1, Z0, Z1, 0, h, { flags: (h > 90 && R() < 0.4 ? 2 : 0) | (R() < 0.18 ? 1 : 0) });
           if (h > 80 && R() < 0.3) { const i2 = 2.5 + R() * 4; if (X1 - X0 > 3 * i2 && Z1 - Z0 > 3 * i2) addB(X0 + i2, X1 - i2, Z0 + i2, Z1 - i2, h, h + 14 + R() * 60, { style: b.style, flags: R() < 0.6 ? 2 : 0 }); }
           if (h > 130) halo(cx, h + (b.flags & 2 ? 4 : 2), cz, 3.4, 'red', 0.95, [2, R() * 3, 2 + R() * 1.4, -1]);
           // big signs facing the avenue entrance, they colour the distance
           if (!far && h > 45 && R() < (Math.abs(cx) < 200 ? 0.22 : 0.12)) {
-            const k = key('v', pick(R, WTXT.v)), sp = P.specs[k];
-            const sh = clamp(h * (0.18 + R() * 0.16), 10, 34), sw = sh * sp.W / sp.H;
-            if (sw < X1 - X0 - 2) addS(k, lerp(X0 + sw, X1 - sw, R()), clamp(h * (0.4 + R() * 0.3), sh / 2 + 6, h - sh / 2 - 2), Z1 + 0.15, 1, 0, sh, { halo: 1 });
+            const chinese = RS() < 0.5;
+            const k = chinese ? key('v', pick(R, WTXT.v)) : key('vt', pick(R, WTXT.vt)), sp = P.specs[k];
+            let sh = clamp(h * (0.18 + R() * 0.16), 10, 34);
+            if (!chinese) sh = Math.min(sh, (X1 - X0 - 4) * sp.H / sp.W);
+            const sw = sh * sp.W / sp.H;
+            if (sw < X1 - X0 - 2 && sh > 6) { const bs = addS(k, lerp(X0 + sw, X1 - sw, R()), clamp(h * (0.4 + R() * 0.3), sh / 2 + 6, h - sh / 2 - 2), Z1 + 0.15, 1, 0, sh, { halo: 1 }); if (chinese) bs.col = cnCol(); }
           }
           if (!far && h > 30 && h < 80 && R() < 0.12) {
             const bwid = Math.min(X1 - X0 - 2, 12 + R() * 10), bhi = bwid * 0.45;
@@ -1919,31 +1951,31 @@ function worldPlan(lite) {
   const poles = (z, top) => { addB(-12.9, -12.3, z - 0.3, z + 0.3, 0, top, { style: 9 }); addB(12.3, 12.9, z - 0.3, z + 0.3, 0, top, { style: 9 }); addB(-12.9, 12.9, z - 0.35, z + 0.35, top - 0.7, top, { style: 9 }); };
   // 0 · welcome banner across the avenue
   poles(8, 18.6);
-  addS(key('H', 'ようこそ'), 0, 14.6, 8.45, 1, 0, 3.9, { col: 'pink', mode: 0, chap: 0, dbl: true, refl: 1, big: true });
-  // 1 · 信号, the signal: a tall blade on the left, and real traffic signals at the first crossing
-  blade(-1, key('V', '信号'), 16, 23, -112, { col: 'cyan', mode: 0, chap: 1, big: true });
+  addS(key('HT', WLAND.welcome), 0, 14.6, 8.45, 1, 0, 3.9, { col: 'pink', mode: 0, chap: 0, dbl: true, refl: 1, big: true });
+  // 1 · สัญญาณ, the signal: a tall blade on the left, and real traffic signals at the first crossing
+  blade(-1, key('VT', WLAND.signal), 9.5, 21, -112, { col: 'cyan', mode: 0, chap: 1, big: true });
   for (const [sx, sz, rot] of [[-12.6, -217.5, 0], [12.6, -242.5, 1]]) {
     addB(sx - 0.15, sx + 0.15, sz - 0.15, sz + 0.15, 0, 6.4, { style: 9 });
     addB(sx - 0.45, sx + 0.45, sz - 0.3, sz + 0.3, 5.0, 7.6, { style: 9 });
     halo(sx, 7.2, sz + (rot ? -0.4 : 0.4), 1.6, 'red', 1, [6, 0, 9, -1]);
     halo(sx, 5.5, sz + (rot ? -0.4 : 0.4), 1.6, 'green', 1, [7, 0, 9, -1]);
   }
-  // 2 · 登竜門, the dragon gate: a dark tower with a waterfall of light and a koi climbing it
+  // 2 · 龍門, the dragon gate: a dark tower with a waterfall of light and a koi climbing it
   addB(18, 64, -386, -316, 0, 236, { style: 3, flags: 1 | 2, ncol: 1, lit: 0.08 });
   addB(16, 18, -386, -364, 0, 236, { style: 3, flags: 1, ncol: 1, lit: 0.05 });
   addB(16, 18, -338, -316, 0, 236, { style: 3, flags: 1, ncol: 1, lit: 0.05 });
   P.falls = { x: 17.96, z0: -363, z1: -339, y0: 0, y1: 222 };
-  blade(1, key('V', '登竜門'), 17, 26, -320, { col: 'pink', mode: 0, chap: 2, big: true });
-  // 3 · 硝子, glass: two glass towers on the left, a giant screen of plant KPIs
+  blade(1, key('V', WLAND.gate), 13, 26, -320, { col: 'pink', mode: 0, chap: 2, big: true });
+  // 3 · กระจก, glass: two glass towers on the left, a giant screen of plant KPIs
   addB(-66, -18, -568, -494, 0, 214, { style: 2, flags: 2, ncol: 1, lit: 0.24 });
   addB(-62, -22, -560, -502, 214, 236, { style: 2, flags: 2, ncol: 1, lit: 0.2 });
   addB(-128, -84, -612, -536, 0, 286, { style: 2, flags: 2, ncol: 0, lit: 0.22 });
   P.board.push({ x: -17.82, y: 38, z: -528, rx: 0, rz: -1, w: 34, h: 17, type: 4, col: 'cyan', chap: 3, seed: 0.3 });
-  blade(-1, key('V', '硝子'), 9.5, 15, -478, { col: 'cyan', mode: 0, chap: 3, big: true });
-  blade(-1, key('v', '工場'), 6.2, 28, -486, { col: 'yellow', mode: 0, chap: 3 });
-  // 4 · 感情, feelings: the hologram of SentimentAI floats above the avenue
+  blade(-1, key('VT', WLAND.glass), 7.5, 15, -478, { col: 'cyan', mode: 0, chap: 3, big: true });
+  blade(-1, key('vt', WLAND.plant), 4.4, 28, -486, { col: 'yellow', mode: 0, chap: 3 });
+  // 4 · ความรู้สึก, feelings: the hologram of SentimentAI floats above the avenue
   P.holo = { x: 0, y: 31, z: -655 };
-  addS(key('V', '感情'), FAC - 0.15, 21, -640, 0, 1, 17, { col: 'pink', mode: 0, chap: 4, refl: 1, big: true });
+  addS(key('VT', WLAND.feel), FAC - 0.15, 21, -640, 0, 1, 11, { col: 'pink', mode: 0, chap: 4, refl: 1, big: true });
   // 5 · off screen: boxing gym, book shop, pet shop
   addB(-34, -16, -846, -806, 0, 22, { style: 4, flags: 4, lit: 0.55 });
   addB(16, 36, -852, -826, 0, 18, { style: 4, flags: 4, lit: 0.6 });
@@ -1953,22 +1985,22 @@ function worldPlan(lite) {
   P.shop.push({ side: 1, x: FAC - 0.04, z0: -851, z1: -827, type: 0, col: 'warm', seed: 0.5 });
   P.shop.push({ side: 1, x: FAC - 0.04, z0: -877, z1: -854, type: 0, col: 'cyan', seed: 0.7 });
   blade(-1, key('i', 'glove'), 5.2, 8.4, -826, { col: 'red', mode: 0, chap: 5, big: true });
-  blade(-1, key('v', 'ボクシング'), 14, 13.5, -812, { col: 'pink', mode: 0, chap: 5 });
+  blade(-1, key('vt', WLAND.box), 6.4, 13.5, -812, { col: 'pink', mode: 0, chap: 5 });
   blade(1, key('i', 'book'), 5, 8, -840, { col: 'yellow', mode: 0, chap: 5, big: true });
-  blade(1, key('v', '本屋'), 6.6, 9.8, -830, { col: 'yellow', mode: 0, chap: 5 });
+  blade(1, key('vt', WLAND.books), 6.6, 10.6, -830, { col: 'yellow', mode: 0, chap: 5 });
   blade(1, key('i', 'paw'), 4.8, 8, -866, { col: 'cyan', mode: 0, chap: 5, big: true });
-  blade(1, key('v', 'ペット'), 8.8, 11, -857, { col: 'cyan', mode: 0, chap: 5 });
+  blade(1, key('vt', WLAND.pets), 4.6, 11, -857, { col: 'cyan', mode: 0, chap: 5 });
   P.lanterns = [{ z: -842, y: 13, n: 13 }, { z: -24, y: 12.5, n: 11 }];
-  // 6 · 未来, tomorrow: a banner at the plaza gate
+  // 6 · อนาคต, tomorrow: a banner at the plaza gate
   poles(-990, 43);
-  addS(key('H', '未来'), 0, 38.6, -989.6, 1, 0, 5.6, { col: 'violet', mode: 0, chap: 6, dbl: true, refl: 1, big: true });
+  addS(key('HT', WLAND.future), 0, 38.6, -989.6, 1, 0, 5.6, { col: 'violet', mode: 0, chap: 6, dbl: true, refl: 1, big: true });
   // 7 · home: the tower at the end of the avenue
   const [hx0, hx1, hz0, hz1] = WORLD.HOME;
   addB(hx0, hx1, hz0, hz1, 0, 342, { style: 2, flags: 1 | 2 | 8, ncol: 0, lit: 0.3 });
   addB(hx0 + 9, hx1 - 9, hz0 + 9, hz1 - 9, 342, 384, { style: 2, flags: 2, ncol: 1, lit: 0.3 });
   addB(-0.6, 0.6, -1155.6, -1154.4, 384, 446, { style: 9 });
   halo(0, 448, -1155, 7, 'red', 1, [2, 0, 1.8, -1]);
-  addS(key('V', 'ラクダル'), 0, 84, hz1 + 0.2, 1, 0, 66, { col: 'pink', mode: 0, chap: 7, big: true, refl: 0 });
+  addS(key('VT', WLAND.home), 0, 86, hz1 + 0.2, 1, 0, 36, { col: 'pink', mode: 0, chap: 7, big: true, refl: 0 });
   addS(key('L', 'LAKDAR KARABADJA'), 0, 150, hz1 + 0.2, 1, 0, 4.6, { col: 'cyan', mode: 0, chap: 7, big: true });
   // plaza surroundings: lower buildings so the tower stands out
   for (const side of [-1, 1]) for (let i = 0; i < 3; i++) {
@@ -1984,8 +2016,9 @@ function worldPlan(lite) {
       P.lamp.push({ x: side * WORLD.LAMPX, z });
       addB(side * 13.4 - 0.12, side * 13.4 + 0.12, z - 0.12, z + 0.12, 0, 7.6, { style: 9 });
       addB(Math.min(side * 13.4, side * 11.3), Math.max(side * 13.4, side * 11.3), z - 0.1, z + 0.1, 7.45, 7.62, { style: 9 });
-      halo(side * WORLD.LAMPX, 7.3, z, 2.2, 'white', 0.75);
-      P.beam.push({ x: side * WORLD.LAMPX, y: 7.3, z, r: 4.6, len: 7.3, col: 'white', a: 0.05 });
+      // Bangkok's avenues still glow sodium orange
+      halo(side * WORLD.LAMPX, 7.3, z, 2.2, 'sodium', 0.8);
+      P.beam.push({ x: side * WORLD.LAMPX, y: 7.3, z, r: 4.6, len: 7.3, col: 'sodium', a: 0.06 });
     }
   }
   // vending machines in small groups along the sidewalks
@@ -2016,6 +2049,49 @@ function worldPlan(lite) {
   }
   for (const [x, z] of [[-4, -66], [5.2, -172], [-6, -392], [3, -586], [-2.4, -722], [6.4, -905], [-5.4, 64], [2.2, 210]]) P.vent.push({ x, z, ph: R() * 10 });
 
+  // street food stalls on the sidewalks: a cart with a lit glass case, a tarp on four poles, a string of bare bulbs
+  P.stall = [];
+  for (let z = WORLD.LAMP0 + WORLD.LAMPSTEP * 13 - 7.5; z > WORLD.PLAZA0 + 8; z -= WORLD.LAMPSTEP) {
+    for (const side of [-1, 1]) {
+      // more of them near the entrance, where the visitor lands
+      const pStall = z < 45 && z > -110 ? 0.9 : lite ? 0.22 : 0.36;
+      if (inX(z, 5) || RS() > pStall) continue;
+      if (Math.abs(z - 8) < 4 || Math.abs(z + 990) < 4) continue;
+      const cx = side * 12.45, tarp = Math.floor(RS() * 4);
+      P.stall.push({ x: cx, z, side });
+      addB(cx - 0.55, cx + 0.55, z - 1.05, z + 1.05, 0, 0.92, { style: 13 });
+      addB(cx - 0.5, cx + 0.5, z - 0.95, z + 0.95, 0.92, 1.42, { style: 14 });
+      addB(cx - 1.05, cx + 1.05, z - 1.55, z + 1.55, 2.28, 2.36, { style: 15, hue: tarp });
+      for (const [dx, dz] of [[-0.95, -1.45], [0.95, -1.45], [-0.95, 1.45], [0.95, 1.45]]) addB(cx + dx - 0.03, cx + dx + 0.03, z + dz - 0.03, z + dz + 0.03, 0, 2.28, { style: 9 });
+      for (let k = 0; k < 3; k++) halo(cx - side * 0.7, 2.12, z - 1 + k, 0.55, 'warm', 1.4, [0, RS() * 9, 1, -1]);
+      halo(cx, 1.6, z, 3.4, 'warm', 0.28);
+    }
+  }
+
+  // Bangkok's tangle of overhead wires: concrete poles along both sidewalks, a dozen cables slung between each pair
+  P.pole = [];
+  for (let z = WORLD.LAMP0 + WORLD.LAMPSTEP * 13 + 15; z > WORLD.PLAZA0 + 10; z -= WORLD.LAMPSTEP) {
+    if (inX(z, 4)) continue;
+    const zn = z - WORLD.LAMPSTEP, next = !inX(zn, 4) && zn > WORLD.PLAZA0 + 10;
+    for (const side of [-1, 1]) {
+      const px = side * 14.6;
+      P.pole.push({ x: px, z });
+      addB(px - 0.16, px + 0.16, z - 0.16, z + 0.16, 0, 9.7, { style: 10 });
+      addB(px - 0.95, px + 0.95, z - 0.06, z + 0.06, 8.7, 8.84, { style: 9 });
+      addB(px - 0.75, px + 0.75, z - 0.06, z + 0.06, 7.9, 8.02, { style: 9 });
+      if (RS() < 0.3) addB(px - side * 0.2 - 0.32, px - side * 0.2 + 0.32, z + 0.18, z + 0.7, 6.2, 7.3, { style: 9 });
+      if (!next) continue;
+      const n = 9 + Math.floor(RS() * 7);
+      for (let i = 0; i < n; i++) {
+        const y = 7.3 + RS() * 2.1, dx = (RS() - 0.5) * 1.5;
+        P.cable.push({ a: [px + dx, y, z], b: [px + dx + (RS() - 0.5) * 0.5, y + (RS() - 0.5) * 0.6, zn], sag: 0.25 + RS() * 1.5 });
+      }
+      // a few drop to the buildings, one or two hang loose in a loop
+      for (let i = 0, m = Math.floor(RS() * 3); i < m; i++) P.cable.push({ a: [px, 7.6 + RS() * 1.6, z - RS() * 2], b: [side * 15.95, 4.8 + RS() * 4, z - 3 - RS() * 22], sag: 0.3 + RS() * 0.9 });
+      if (RS() < 0.4) { const y = 7.4 + RS() * 1.2, zc = z - 3 - RS() * 20; P.cable.push({ a: [px, y, zc + 1.4], b: [px + side * 0.2, y, zc - 1.4], sag: 1.6 + RS() * 1.2 }); }
+    }
+  }
+
   for (let z = 420; z > WORLD.PLAZA0; z -= 20 + R() * 10) {
     halo((R() - 0.5) * 14, 6 + R() * 9, z, 16 + R() * 12, pick(R, ['pink', 'cyan', 'violet', 'pink']), 0.045 + R() * 0.03, [8, R() * 9, 1, -1]);
   }
@@ -2032,12 +2108,44 @@ function worldPlan(lite) {
   }
   // cars on the avenue: two loops, out on the right, a U-turn on the plaza, back on the left, and around again behind the entrance
   P.loops = [{ a: 2.6, zTop: 458, zBot: -1032, n: 30, sp: 12.5 }, { a: 6.3, zTop: 458, zBot: -1032, n: 26, sp: 15.5 }];
+  // the slow lane by the curb: motorbikes (some of them motorbike taxis, orange vests) and tuk-tuks
+  P.loops.push({ a: 9.0, zTop: 458, zBot: -1032, n: 34, sp: 9.5, slow: true });
 
-  // monorail above the second cross street: track, pillars, and the train that runs on it
-  const TZ = CROSS[1];
-  addB(-780, 780, TZ - 1.6, TZ + 1.6, 25.4, 26.9, { style: 9 });
-  for (const x of [-13.6, 13.6, -40, 40, -78, 78, -116, 116, -154, 154, -230, 230, -306, 306, -382, 382, -458, 458, -534, 534, -610, 610, -686, 686]) addB(x - 0.7, x + 0.7, TZ - 0.7, TZ + 0.7, 0, 25.4, { style: 9 });
-  P.train = { z: TZ, y: 26.95 };
+  // the wat: a walled compound, a white terrace, a golden chedi in the middle and four small ones at the corners
+  {
+    const { x: tx, z: tz, r } = WORLD.TEMPLE;
+    P.temple = { x: tx, z: tz, scale: 0.9, small: [[-22, -22], [22, -22], [-22, 22], [22, 22]] };
+    addB(tx - 25, tx + 25, tz - 25, tz + 25, 0, 0.9, { style: 12 });
+    for (const [x0, x1, z0, z1] of [[tx - r, tx + r, tz - r, tz - r + 0.7], [tx - r, tx + r, tz + r - 0.7, tz + r], [tx - r, tx - r + 0.7, tz - r, tz + r], [tx + r - 0.7, tx + r, tz - r, tz + r]]) addB(x0, x1, z0, z1, 0, 2.8, { style: 12 });
+    for (const [a, b] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) halo(tx + a * 17, 2.2, tz + b * 17, 10, 'warm', 0.4, [4, 0, 1, -1]);
+    halo(tx, 30, tz, 34, 'warm', 0.07, [8, 0, 1, -1]);
+  }
+
+  // BTS skytrain above the second cross street: a concrete viaduct on big pillars, a station east of the avenue, the train on top
+  const TZ = CROSS[1], DECK = 13.4;
+  P.bts = { z: TZ, deck: DECK, x0: 26, x1: 104 };
+  addB(-780, 780, TZ - 4.3, TZ + 4.3, DECK - 1.8, DECK, { style: 10 });
+  addB(-780, 780, TZ - 4.3, TZ - 4.0, DECK, DECK + 1.15, { style: 10 });
+  addB(-780, 780, TZ + 4.0, TZ + 4.3, DECK, DECK + 1.15, { style: 10 });
+  for (let x = 13.8; x < 780; x += 36) for (const sx of [-1, 1]) {
+    const px = sx * x;
+    addB(px - 0.85, px + 0.85, TZ - 0.85, TZ + 0.85, 0, DECK - 2.6, { style: 10 });
+    addB(px - 1.15, px + 1.15, TZ - 4.5, TZ + 4.5, DECK - 2.6, DECK - 1.8, { style: 10 });
+  }
+  {
+    const x0 = P.bts.x0, x1 = P.bts.x1;
+    // the concourse under the tracks, glazed and lit, on its own pillars
+    addB(x0, x1, TZ - 9, TZ + 9, 6.4, 9.8, { style: 11 });
+    for (const px of [x0 + 2, (x0 + x1) / 2, x1 - 2]) for (const pz of [TZ - 7.5, TZ + 7.5]) addB(px - 0.7, px + 0.7, pz - 0.7, pz + 0.7, 0, 6.4, { style: 10 });
+    // platforms either side of the tracks, glass walls and a long roof
+    addB(x0 + 2, x1 - 2, TZ - 7.2, TZ - 4.3, DECK - 1.8, DECK + 0.5, { style: 10 });
+    addB(x0 + 2, x1 - 2, TZ + 4.3, TZ + 7.2, DECK - 1.8, DECK + 0.5, { style: 10 });
+    addB(x0 + 2, x1 - 2, TZ - 7.5, TZ - 7.2, DECK + 0.5, DECK + 4.4, { style: 11 });
+    addB(x0 + 2, x1 - 2, TZ + 7.2, TZ + 7.5, DECK + 0.5, DECK + 4.4, { style: 11 });
+    addB(x0, x1, TZ - 8.2, TZ + 8.2, DECK + 4.4, DECK + 5.1, { style: 10 });
+    addS(key('ht', 'สถานีลักดาร์'), x0 - 0.12, 8.1, TZ, 0, 1, 2.1, { col: 'green', mode: 0, halo: 1, refl: 1 });
+  }
+  P.train = { z: TZ, y: DECK + 0.3 };
   // searchlights from far towers (and one from the home tower, guiding the way)
   P.search = [[-330, 210, -1320, 0.21], [390, 260, -1720, 0.17], [-620, 170, -640, 0.24], [540, 150, -320, 0.19], [0, 386, -1155, 0.12], [260, 230, -1050, 0.22]];
   return P;
@@ -2106,6 +2214,22 @@ function drawSignShape(q, s, ox, oy, W, H, sc) {
     const step = (W - lw * 7) / chars.length;
     q.font = `${Math.min(H * 0.66, step * 0.88).toFixed(1)}px ${JP}`;
     chars.forEach((ch, i) => q.fillText(ch, ox + lw * 3.5 + step * (i + 0.5), oy + H / 2 + H * 0.02));
+  } else if (s.kind === 'ht' || s.kind === 'HT' || s.kind === 'vt' || s.kind === 'VT') {
+    // Thai: whole words (the vowels and tone marks must stay with their letters), one word per line on the blades
+    q.strokeRect(ox + lw * 1.5, oy + lw * 1.5, W - lw * 3, H - lw * 3);
+    const lines = s.text.split('|');
+    const nominal = { ht: 100, HT: 190, vt: 92, VT: 176 }[s.kind] * sc;
+    const lineH = (H - lw * 6) / lines.length;
+    q.font = `600 ${nominal.toFixed(1)}px ${THF}`;
+    const widest = Math.max(...lines.map((l) => q.measureText(l).width)) || 1;
+    const fs = Math.min(nominal, nominal * (W - lw * 9) / widest, lineH * 0.74);
+    q.font = `600 ${fs.toFixed(1)}px ${THF}`;
+    q.textBaseline = 'alphabetic';
+    lines.forEach((l, i) => {
+      const m = q.measureText(l);
+      const asc = m.actualBoundingBoxAscent || fs * 0.72, desc = m.actualBoundingBoxDescent || fs * 0.12;
+      q.fillText(l, ox + W / 2, oy + lw * 3 + lineH * (i + 0.5) + (asc - desc) / 2);
+    });
   } else if (s.kind === 'h' || s.kind === 'L') {
     const fs = s.kind === 'L' ? 140 * sc : 100 * sc;
     q.font = `${fs.toFixed(1)}px ${NEONF}`;
@@ -2362,7 +2486,7 @@ class WorldScene {
     this.atlasTex = tex;
     this.initPost();
     this.buildSky(); this.buildGround(); this.buildCity(); this.buildShops(); this.buildSigns(); this.buildHalos(); this.buildWash(); this.buildRefl();
-    this.buildBoards(); this.buildBeams(); this.buildCables(); this.buildRain(); this.buildSplash(); this.buildTraffic(); this.buildTrain(); this.buildBlimp();
+    this.buildBoards(); this.buildBeams(); this.buildCables(); this.buildRain(); this.buildSplash(); this.buildTraffic(); this.buildTrain(); this.buildTemple(); this.buildBlimp();
     this.buildSearch(); this.buildSteam(); this.buildFalls(); this.buildKoi(); this.buildHolo();
     // things that only exist in the main view: the ground (it is the mirror), rain, splashes, steam, fake reflections
     this.cam.layers.enable(1);
@@ -2649,7 +2773,7 @@ class WorldScene {
         for (int i = 0; i < 4; i++) lampOK *= step(13.0, abs(zk - uCross[i]));
         float dl = length(vec2(ax - 10.6, p.y - zk));
         float pool = exp(-dl * dl / 20.0) * lampOK * step(-1004.0, zk) * step(zk, 406.0);
-        col += vec3(0.8, 0.76, 1.0) * pool * 0.16;
+        col += vec3(1.0, 0.58, 0.26) * pool * 0.2;
         float dzl = abs(mod(p.y + 15.0, 30.0) - 15.0), dxl = abs(mod(ax + 15.0, 30.0) - 15.0);
         float poolG = exp(-((gx - 5.0) * (gx - 5.0) + dzl * dzl) / 14.0) * step(50.0, ax) + exp(-((gz - 5.0) * (gz - 5.0) + dxl * dxl) / 14.0) * step(50.0, ax) * minor;
         col += vec3(1.0, 0.6, 0.32) * poolG * 0.14;
@@ -2730,7 +2854,7 @@ class WorldScene {
       face([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]], [0, 0, 1], sx, b, y1, 0);
       face([[x1, y0, z0], [x0, y0, z0], [x0, y1, z0], [x1, y1, z0]], [0, 0, -1], sx, b, y1, 0);
       face([[x0, y1, z1, 0, sz], [x1, y1, z1, sx, sz], [x1, y1, z0, sx, 0], [x0, y1, z0, 0, 0]], [0, 1, 0], sx, b, y1, sz);
-      if (y0 < 0.01) face([[x0, y0, z0, 0, 0], [x1, y0, z0, sx, 0], [x1, y0, z1, sx, sz], [x0, y0, z1, 0, sz]], [0, -1, 0], sx, b, y1, sz);
+      face([[x0, y0, z0, 0, 0], [x1, y0, z0, sx, 0], [x1, y0, z1, sx, sz], [x0, y0, z1, 0, sz]], [0, -1, 0], sx, b, y1, sz);
     }
     this.stats = { buildings: P.B.length, verts: vi };
     const vs = `attribute vec3 aU; attribute vec4 aB; attribute vec4 aF;
@@ -2827,8 +2951,13 @@ class WorldScene {
         float fA = fogAmt(vW);
         if (fA > 0.985) { gl_FragColor = vec4(fogCol(vW), 1.0); return; }
         vec3 n = normalize(vN);
-        if (n.y < -0.5) { gl_FragColor = vec4(mix(vec3(0.02, 0.018, 0.04), fogCol(vW), fA), 1.0); return; }
         float seed = floor(vB.x * 1000.0 + 0.5) / 1000.0, style = floor(vB.y + 0.5), lit = floor(vB.z * 100.0 + 0.5) / 100.0, hue = floor(vB.w + 0.5);
+        if (n.y < -0.5) {
+          // undersides: dark, except the skytrain's concrete, lit from the street below (sodium lamps, neon)
+          vec3 under = vec3(0.02, 0.018, 0.04);
+          if (style > 9.5) { vec3 nb = mix(PINK, CYAN, 0.5 + 0.5 * sin(vW.z * 0.021 + vW.x * 0.013)); under = vec3(0.045, 0.04, 0.06) + vec3(1.0, 0.56, 0.22) * 0.07 * (0.6 + 0.4 * sin(vW.x * 0.21)) + nb * 0.035; }
+          gl_FragColor = vec4(mix(under, fogCol(vW), fA), 1.0); return;
+        }
         float flags = floor(vF.x + 0.5), top = floor(vF.z * 10.0 + 0.5) / 10.0;
         bool roof = n.y > 0.5;
         vec3 V = normalize(vW - cameraPosition);
@@ -2839,7 +2968,46 @@ class WorldScene {
         col += vec3(0.05, 0.04, 0.12) * smoothstep(30.0, 320.0, vW.y);
         vec3 emis = vec3(0.0);
         vec3 nc = ncolOf(vF.y);
-        if (style > 8.5) {
+        if (style > 14.5) {
+          // a stall's tarp: red, blue, orange or green plastic, glowing a little from the bulbs underneath
+          vec3 tc = hue < 0.5 ? vec3(0.62, 0.06, 0.07) : (hue < 1.5 ? vec3(0.05, 0.16, 0.55) : (hue < 2.5 ? vec3(0.8, 0.32, 0.04) : vec3(0.05, 0.4, 0.16)));
+          col = tc * (roof ? 0.22 : 0.4);
+          emis += tc * (roof ? 0.05 : 0.35);
+        } else if (style > 13.5) {
+          // the stall's glass case, lit warm from inside
+          emis += vec3(1.0, 0.72, 0.42) * (roof ? 0.4 : 0.85);
+          col = vec3(0.05, 0.04, 0.03);
+        } else if (style > 12.5) {
+          // stainless steel cart
+          col = vec3(0.12, 0.12, 0.14) + vec3(1.0, 0.7, 0.42) * 0.12 * (0.5 + 0.5 * n.y) + mix(vec3(0.12, 0.09, 0.22), street * 0.3, 0.5) * pow(1.0 - abs(dot(V, n)), 3.0) * 0.6;
+        } else if (style > 11.5) {
+          // the temple's white plaster, washed by warm floodlights
+          col = vec3(0.3, 0.26, 0.22) * (roof ? 0.85 : 1.0) * (0.9 + 0.2 * vnoise(vW.xz * 0.2)) + vec3(1.0, 0.6, 0.3) * 0.09;
+        } else if (style > 10.5) {
+          // the skytrain station: a glazed band, lit from inside, white mullions, a green line along the top
+          float u = vU.x, v = vU.y;
+          col = vec3(0.06, 0.06, 0.08);
+          if (!roof) {
+            float band = step(top - 3.0, v) * step(v, top - 0.5);
+            float mull = smoothstep(0.03, 0.06, abs(fract(u / 2.2) - 0.5));
+            emis += vec3(0.82, 0.92, 1.0) * band * mull * 0.85 * (0.85 + 0.15 * vnoise(vec2(u * 0.3, 1.0)));
+            emis += vec3(0.25, 0.95, 0.45) * step(top - 0.42, v) * step(v, top - 0.18) * 0.9;
+          }
+        } else if (style > 9.5) {
+          // concrete of the viaduct and its pillars: grey, stained by the rain, warmed by the sodium lamps below
+          float u = vU.x, v = vU.y;
+          col = vec3(0.085, 0.08, 0.1) * (roof ? 0.8 : 1.0);
+          col *= 0.85 + 0.3 * vnoise(vec2(u * 0.6, v * 0.15) + seed * 30.0);
+          col += vec3(1.0, 0.56, 0.22) * 0.05 * exp(-max(v, 0.0) / 9.0) + street * up * 0.08;
+          float wetSheen = pow(1.0 - abs(dot(V, n)), 5.0) * 0.5;
+          col += mix(vec3(0.12, 0.09, 0.22), street * 0.25, 0.5) * wetSheen;
+          // the long sides of the viaduct carry a line of white lights under the parapet
+          float fwv = vU.z;
+          if (!roof && fwv > 100.0) {
+            float dvv = abs(dFdx(v)) + abs(dFdy(v));
+            emis += vec3(0.85, 0.92, 1.0) * boxAA(v, top - 0.42, top - 0.3, dvv) * (0.7 + 0.3 * step(0.5, fract(u / 3.0))) * 1.2;
+          }
+        } else if (style > 8.5) {
           col = vec3(0.05, 0.045, 0.09) + street * up * 0.1;
         } else if (!roof) {
           float u = vU.x, v = vU.y, fw = floor(vU.z * 100.0 + 0.5) / 100.0;
@@ -3454,7 +3622,7 @@ class WorldScene {
         float lamp = exp(-((abs(p.x) - 11.6) * (abs(p.x) - 11.6) + (p.z - zk) * (p.z - zk)) / 28.0) * step(p.y, 8.0);
         vec3 neon = mix(PINK, CYAN, 0.5 + 0.5 * sin(p.z * 0.021 + p.x * 0.013));
         float wall = smoothstep(9.0, 15.5, abs(p.x)) * exp(-max(p.y - 4.0, 0.0) / 14.0);
-        vec3 c = vec3(0.62, 0.66, 0.85) * 0.2 + vec3(0.85, 0.85, 1.0) * lamp * 0.9 + neon * (0.12 + wall * 0.45);
+        vec3 c = vec3(0.62, 0.66, 0.85) * 0.2 + vec3(1.0, 0.66, 0.36) * lamp * 0.9 + neon * (0.12 + wall * 0.45);
         float fast = 1.0 / (1.0 + max(length(uCamVel) - 6.0, 0.0) * 0.06);
         vCol = c * uRain * fast * smoothstep(0.9, 2.8, d) * (1.0 - smoothstep(uBox.x * 0.3, uBox.x * 0.5, d)) * (1.0 - fogAmt(p) * 0.85) * (0.6 + 0.4 * aSeed.y);
       }`;
@@ -3560,7 +3728,7 @@ class WorldScene {
         const hub = [wx > 0 ? wx + hw : wx - hw, 0.34, wz];
         for (let k = 0; k < SEG; k++) tri(hub, O[k], O[(k + 1) % SEG], 6, [wx, 0.34, wz]);
       }
-      box(-0.22, 0.22, 1.42, 1.62, -0.48, -0.16, 7);
+      box(-0.36, 0.36, 1.42, 1.66, -0.5, -0.12, 7);
     } else {
       const S = [
         { z: 2.7, hw: 0.25, yb: 0.55, yl: 0.68, yt: 0.72, ht: 0.18 },
@@ -3598,23 +3766,119 @@ class WorldScene {
     return { pos, nor: Array.from(sm), part };
   }
 
+  // a Bangkok tuk-tuk: one front wheel, an open cab, a canopy roof trimmed with LED strips
+  tukModel() {
+    const pos = [], nor = [], part = [];
+    const quad = (a, b, c, d, n, k) => { for (const p of [a, b, c, a, c, d]) { pos.push(p[0], p[1], p[2]); nor.push(n[0], n[1], n[2]); part.push(k); } };
+    const box = (x0, x1, y0, y1, z0, z1, k, bottom) => {
+      quad([x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1], [0, 0, 1], k);
+      quad([x1, y0, z0], [x0, y0, z0], [x0, y1, z0], [x1, y1, z0], [0, 0, -1], k);
+      quad([x1, y0, z1], [x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [1, 0, 0], k);
+      quad([x0, y0, z0], [x0, y0, z1], [x0, y1, z1], [x0, y1, z0], [-1, 0, 0], k);
+      quad([x0, y1, z1], [x1, y1, z1], [x1, y1, z0], [x0, y1, z0], [0, 1, 0], k);
+      if (bottom) quad([x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1], [0, -1, 0], k);
+    };
+    const wheel = (wx, wz, r, hw) => {
+      const SEG = 10;
+      for (let k = 0; k < SEG; k++) {
+        const t0 = (k / SEG) * TAU, t1 = ((k + 1) / SEG) * TAU;
+        const a = [wx - hw, r + Math.sin(t0) * r, wz + Math.cos(t0) * r], b = [wx - hw, r + Math.sin(t1) * r, wz + Math.cos(t1) * r];
+        const c = [wx + hw, r + Math.sin(t1) * r, wz + Math.cos(t1) * r], d = [wx + hw, r + Math.sin(t0) * r, wz + Math.cos(t0) * r];
+        const tm = (t0 + t1) / 2;
+        quad(a, d, c, b, [0, Math.sin(tm), Math.cos(tm)], 4);
+        for (const sx of [-1, 1]) {
+          const x = wx + sx * hw, p0 = [x, r + Math.sin(t0) * r, wz + Math.cos(t0) * r], p1 = [x, r + Math.sin(t1) * r, wz + Math.cos(t1) * r];
+          const tri = sx > 0 ? [[x, r, wz], p1, p0] : [[x, r, wz], p0, p1];
+          for (const p of tri) { pos.push(p[0], p[1], p[2]); nor.push(sx, 0, 0); part.push(6); }
+        }
+      }
+    };
+    wheel(0, 1.16, 0.23, 0.07);
+    wheel(-0.6, -0.95, 0.26, 0.09); wheel(0.6, -0.95, 0.26, 0.09);
+    box(-0.3, 0.3, 0.34, 0.98, 0.95, 1.46, 0, true);                    // front fairing
+    box(-0.56, 0.56, 0.3, 0.42, -0.25, 0.98, 6, true);                  // cab floor
+    box(-0.7, 0.7, 0.3, 0.92, -1.48, -0.2, 0, true);                    // passenger tub
+    box(-0.62, 0.62, 0.92, 1.08, -1.46, -1.3, 0);                       // seat back rail
+    box(-0.58, 0.58, 0.62, 0.76, -1.28, -0.62, 6);                      // bench
+    box(-0.48, 0.48, 0.96, 1.42, 0.97, 1.0, 1);                         // windscreen
+    box(-0.74, 0.74, 1.72, 1.84, -1.52, 1.06, 8);                       // canopy
+    for (const [x, z] of [[-0.66, -1.44], [0.66, -1.44], [-0.5, 0.97], [0.5, 0.97]]) box(x - 0.03, x + 0.03, 0.9, 1.72, z - 0.03, z + 0.03, 6);
+    for (const sx of [-1, 1]) {
+      box(sx * 0.745 - 0.02, sx * 0.745 + 0.02, 1.66, 1.71, -1.5, 1.04, 5);    // LED strips under the canopy edge
+      box(sx * 0.705 - 0.02, sx * 0.705 + 0.02, 0.26, 0.3, -1.46, -0.22, 5);   // LED strips along the sills
+      box(sx * 0.5 - 0.1, sx * 0.5 + 0.1, 0.72, 0.84, -1.49, -1.48, 3);       // tail lights
+    }
+    box(-0.74, 0.74, 1.64, 1.72, 1.03, 1.07, 5);                        // LED strip across the front of the canopy
+    box(-0.09, 0.09, 0.7, 0.84, 1.46, 1.48, 2);                         // headlight
+    box(-0.19, 0.19, 0.74, 1.24, 0.38, 0.66, 6);                        // the driver
+    box(-0.11, 0.11, 1.26, 1.5, 0.42, 0.62, 6);
+    return { pos, nor, part };
+  }
+
+  // a scooter and its rider; motorbike taxis wear orange vests
+  motoModel() {
+    const pos = [], nor = [], part = [];
+    const quad = (a, b, c, d, n, k) => { for (const p of [a, b, c, a, c, d]) { pos.push(p[0], p[1], p[2]); nor.push(n[0], n[1], n[2]); part.push(k); } };
+    const box = (x0, x1, y0, y1, z0, z1, k) => {
+      quad([x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1], [0, 0, 1], k);
+      quad([x1, y0, z0], [x0, y0, z0], [x0, y1, z0], [x1, y1, z0], [0, 0, -1], k);
+      quad([x1, y0, z1], [x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [1, 0, 0], k);
+      quad([x0, y0, z0], [x0, y0, z1], [x0, y1, z1], [x0, y1, z0], [-1, 0, 0], k);
+      quad([x0, y1, z1], [x1, y1, z1], [x1, y1, z0], [x0, y1, z0], [0, 1, 0], k);
+      quad([x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1], [0, -1, 0], k);
+    };
+    const wheel = (wz) => {
+      const SEG = 10, r = 0.27, hw = 0.055;
+      for (let k = 0; k < SEG; k++) {
+        const t0 = (k / SEG) * TAU, t1 = ((k + 1) / SEG) * TAU, tm = (t0 + t1) / 2;
+        const P = (x, t) => [x, r + Math.sin(t) * r, wz + Math.cos(t) * r];
+        quad(P(-hw, t0), P(hw, t0), P(hw, t1), P(-hw, t1), [0, Math.sin(tm), Math.cos(tm)], 4);
+        for (const sx of [-1, 1]) { const tri = sx > 0 ? [[hw, r, wz], P(hw, t1), P(hw, t0)] : [[-hw, r, wz], P(-hw, t0), P(-hw, t1)]; for (const p of tri) { pos.push(p[0], p[1], p[2]); nor.push(sx, 0, 0); part.push(4); } }
+      }
+    };
+    wheel(0.66); wheel(-0.62);
+    box(-0.19, 0.19, 0.3, 0.6, -0.78, 0.42, 0);      // body
+    box(-0.17, 0.17, 0.32, 1.02, 0.42, 0.6, 0);      // leg shield and front
+    box(-0.33, 0.33, 0.98, 1.04, 0.42, 0.52, 6);     // handlebar
+    box(-0.16, 0.16, 0.6, 0.71, -0.72, -0.05, 6);    // seat
+    box(-0.19, 0.19, 0.56, 0.86, -0.38, 0.22, 6);    // the rider's legs
+    box(-0.21, 0.21, 0.86, 1.42, -0.46, -0.1, 9);    // torso: jacket, or the orange vest of a motorbike taxi
+    box(-0.06, 0.06, 1.0, 1.08, -0.14, 0.44, 9);     // arms to the bars
+    box(-0.13, 0.13, 1.44, 1.72, -0.4, -0.13, 1);    // helmet
+    box(-0.07, 0.07, 0.86, 0.96, 0.6, 0.62, 2);      // headlight
+    box(-0.08, 0.08, 0.62, 0.7, -0.8, -0.78, 3);     // tail light
+    return { pos, nor, part };
+  }
+
   buildTraffic() {
     const T = this.T, P = this.plan, R = rng(4242);
-    const PAINT = [[0.035, 0.035, 0.045], [0.035, 0.035, 0.045], [0.5, 0.52, 0.56], [0.78, 0.78, 0.82], [0.3, 0.03, 0.055], [0.04, 0.07, 0.24], [0.82, 0.6, 0.05], [0.1, 0.24, 0.2], [0.17, 0.17, 0.21], [0.6, 0.6, 0.64]];
+    // Bangkok traffic: white, silver and black cars, pink and green-and-yellow taxis, tuk-tuks with LED strips
+    const PAINT = [[0.035, 0.035, 0.045], [0.035, 0.035, 0.045], [0.5, 0.52, 0.56], [0.78, 0.78, 0.82], [0.8, 0.8, 0.84], [0.3, 0.03, 0.055], [0.04, 0.07, 0.24], [0.17, 0.17, 0.21], [0.6, 0.6, 0.64]];
+    const TAXI = [null, [0.95, 0.1, 0.48], [0.04, 0.42, 0.14], [0.95, 0.3, 0.03], [0.05, 0.2, 0.72]];
+    const TUK = [[0.04, 0.2, 0.62], [0.03, 0.42, 0.2], [0.66, 0.05, 0.08], [0.06, 0.32, 0.5], [0.5, 0.06, 0.4]];
     const NEON = [WCOL.cyan, WCOL.pink, WCOL.violet, WCOL.cyan];
-    const ground = [], air = [];
+    const LED = [WCOL.pink, WCOL.cyan, WCOL.green, WCOL.violet, WCOL.yellow];
+    const MOTO = [[0.6, 0.6, 0.64], [0.06, 0.06, 0.08], [0.7, 0.08, 0.1], [0.08, 0.2, 0.6], [0.8, 0.8, 0.84], [0.1, 0.4, 0.2]];
+    const ground = [], air = [], tuk = [], moto = [];
     for (const L of P.loops) {
       const n = this.lite ? Math.ceil(L.n * 0.6) : L.n, len = 2 * (L.zTop - L.zBot) + Math.PI * 2 * L.a;
       for (let i = 0; i < n; i++) {
-        const pi = Math.floor(R() * PAINT.length);
-        ground.push({ p0: [L.a, L.zTop, L.zBot, len], p1: [0, 0, 0, 0], p2: [0, L.sp, (i + R() * 0.45) / n, pi === 6 ? 1 : 0], paint: PAINT[pi], seed: R() });
+        const r = R(), ph = (i + R() * 0.45) / n;
+        if (L.slow) {
+          // speeds vary a little: motorbikes weave, tuk-tuks dawdle (phases are spaced so they never overlap)
+          if (r < 0.3) tuk.push({ p0: [L.a, L.zTop, L.zBot, len], p1: [0, 0, 0, 0], p2: [0, L.sp, ph, 0], paint: TUK[Math.floor(R() * TUK.length)], neon: LED[Math.floor(R() * LED.length)], seed: R(), tuk: 1 });
+          else moto.push({ p0: [L.a, L.zTop, L.zBot, len], p1: [0, 0, 0, 0], p2: [0, L.sp, ph, R() < 0.45 ? 1 : 0], paint: MOTO[Math.floor(R() * MOTO.length)], seed: R(), tuk: 2 });
+          continue;
+        }
+        const taxi = r < 0.42 ? 1 : r < 0.53 ? 2 : r < 0.57 ? 3 : r < 0.6 ? 4 : 0;
+        ground.push({ p0: [L.a, L.zTop, L.zBot, len], p1: [0, 0, 0, 0], p2: [0, L.sp, ph, taxi], paint: taxi ? TAXI[taxi] : PAINT[Math.floor(R() * PAINT.length)], seed: R() });
       }
     }
     for (const L of P.lane) {
       const n = this.lite ? Math.ceil(L.n * 0.6) : L.n;
       for (let i = 0; i < n; i++) air.push({ p0: [L.o[0], L.o[1], L.o[2], L.len], p1: [L.d[0], L.d[1], L.d[2], 0], p2: [1, L.sp, (i + R() * 0.5) / n, 0], paint: PAINT[Math.floor(R() * 3)], neon: NEON[Math.floor(R() * NEON.length)], seed: R() });
     }
-    this.carCount = { ground: ground.length, air: air.length };
+    this.carCount = { ground: ground.length, air: air.length, tuk: tuk.length, moto: moto.length };
     // where a car is, and which way it faces, at time uTime
     const frame = `
       uniform float uTime;
@@ -3642,7 +3906,7 @@ class WorldScene {
         vec3 up = vec3(0.0, 1.0, 0.0), rt = normalize(cross(up, fwd));
         vec3 lp = position;
         // only taxis carry the roof light
-        if (aPart > 6.5 && aP2.w < 0.5) lp = vec3(0.0, 0.8, 0.0);
+        if (aPart > 6.5 && aPart < 7.5 && aP2.w < 0.5) lp = vec3(0.0, 0.8, 0.0);
         vec3 w = pos + rt * lp.x + up * lp.y + fwd * lp.z;
         vW = w; vN = rt * normal.x + up * normal.y + fwd * normal.z;
         vPart = aPart; vLocal = position; vPaint = aPaint; vTaxi = aP2.w; vFly = aP2.x; vNeon = aNeon;
@@ -3665,10 +3929,19 @@ class WorldScene {
         float fres = 0.04 + 0.96 * pow(1.0 - max(dot(-V, N), 0.0), 5.0);
         float p = vPart;
         vec3 col;
-        if (p < 0.5) {
+        if (p > 8.5) {
+          // the rider: a dark jacket, or the orange vest of a motorbike taxi (with a reflective band)
+          vec3 cloth = vTaxi > 0.5 ? vec3(0.95, 0.32, 0.03) : vec3(0.06, 0.06, 0.08);
+          float band = vTaxi > 0.5 ? (1.0 - smoothstep(0.0, 0.03, abs(vLocal.y - 1.12))) : 0.0;
+          col = cloth * (0.2 + 0.3 * max(N.y, 0.0) + lamp * 0.5) + cloth * spill * 0.15 + env * 0.06 + vec3(0.9) * band * (0.3 + lamp);
+        } else if (p < 0.5 || p > 7.5) {
           vec3 base = vPaint;
+          // green-and-yellow taxis: yellow roof and pillars over a green body
+          if (vTaxi > 1.5 && vTaxi < 2.5 && vLocal.y > 0.8) base = vec3(0.9, 0.7, 0.05);
+          // the tuk-tuk canopy: a darker shade of the body
+          if (p > 7.5) base *= 0.55;
           float up = max(N.y, 0.0);
-          vec3 diff = base * (0.16 + 0.24 * up + lamp * 0.6 * (0.4 + 0.6 * up)) + base * spill * 0.2;
+          vec3 diff = base * (0.16 + 0.24 * up) + base * vec3(1.0, 0.7, 0.42) * lamp * 0.6 * (0.4 + 0.6 * up) + base * spill * 0.2;
           float spec = pow(max(Rf.y, 0.0), 12.0) * (0.25 + lamp * 1.2);
           col = diff + env * mix(0.12, 0.85, fres) + vec3(0.9, 0.85, 1.0) * spec * 0.35;
           // door seams and the B-pillar line
@@ -3690,9 +3963,11 @@ class WorldScene {
         } else if (p < 6.5) {
           col = vec3(0.07, 0.07, 0.08) + env * 0.35;
         } else {
-          col = vec3(1.2, 0.95, 0.55);
+          // TAXI-METER: a lit sign with red lettering
+          float letters = step(0.35, fract(vLocal.x * 7.5)) * step(abs(vLocal.y - 1.54), 0.05) * step(0.4, abs(N.z));
+          col = mix(vec3(1.25, 1.05, 0.7), vec3(1.4, 0.12, 0.08), letters);
         }
-        bool emis = p > 1.5 && p < 3.5 || p > 4.5 && p < 5.5 || p > 6.5;
+        bool emis = p > 1.5 && p < 3.5 || p > 4.5 && p < 5.5 || (p > 6.5 && p < 7.5);
         col = mix(col, fogCol(vW), fA * (emis ? 0.65 : 1.0));
         gl_FragColor = vec4(col, 1.0);
       }`;
@@ -3702,7 +3977,7 @@ class WorldScene {
       g.setAttribute('normal', new T.Float32BufferAttribute(model.nor, 3));
       g.setAttribute('aPart', new T.Float32BufferAttribute(model.part, 1));
       const put = (name, n, f) => { const a = new Float32Array(list.length * n); list.forEach((c, i) => { const v = f(c); for (let k = 0; k < n; k++) a[i * n + k] = v[k]; }); g.setAttribute(name, new T.InstancedBufferAttribute(a, n)); };
-      put('aP0', 4, (c) => c.p0); put('aP1', 4, (c) => c.p1); put('aP2', 4, (c) => c.p2); put('aP3', 4, (c) => [c.seed, 0, 0, 0]);
+      put('aP0', 4, (c) => c.p0); put('aP1', 4, (c) => c.p1); put('aP2', 4, (c) => c.p2); put('aP3', 4, (c) => [c.seed, c.tuk || 0, 0, 0]);
       put('aPaint', 3, (c) => c.paint);
       put('aNeon', 3, (c) => c.neon || [0, 0, 0]);
       g.instanceCount = list.length;
@@ -3711,6 +3986,8 @@ class WorldScene {
     const carMat = this.mat(vs, fs, null, { side: T.DoubleSide });
     this.add(mkInst(this.carModel(false), ground), carMat, 2);
     this.add(mkInst(this.carModel(true), air), carMat, 2);
+    if (tuk.length) this.add(mkInst(this.tukModel(), tuk), carMat, 2);
+    if (moto.length) this.add(mkInst(this.motoModel(), moto), carMat, 2);
     // lights: head lights shine forward only, tail lights backward; pools of light on the wet road
     const gq = { pos: [], corner: [], slot: [] };
     for (let sIdx = 0; sIdx < 7; sIdx++) for (const [ex, ey] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) { gq.pos.push(0, 0, 0); gq.corner.push(ex, ey); gq.slot.push(sIdx); }
@@ -3721,31 +3998,33 @@ class WorldScene {
       void main(){
         vec3 pos, fwd; carFrame(pos, fwd);
         vec3 up = vec3(0.0, 1.0, 0.0), rt = normalize(cross(up, fwd));
-        bool fly = aP2.x > 0.5;
+        bool fly = aP2.x > 0.5, tuk = aP3.y > 0.5 && aP3.y < 1.5, moto = aP3.y > 1.5;
         vec3 toCam = normalize(cameraPosition - (pos + up * 0.6));
         float facing = dot(fwd, toCam);
         vec3 lp = vec3(0.0); vec3 col = vec3(0.0); float size = 1.0; vMode = 0.0;
         if (aSlot < 1.5) {
-          lp = fly ? vec3(aSlot < 0.5 ? 0.15 : -0.15, 0.63, 2.78) : vec3(aSlot < 0.5 ? 0.58 : -0.58, 0.58, 2.36);
-          col = (fly ? vec3(0.75, 0.9, 1.0) : vec3(1.0, 0.92, 0.78)) * smoothstep(-0.3, 0.4, facing) * 1.1;
-          size = fly ? 1.2 : 1.0;
+          lp = fly ? vec3(aSlot < 0.5 ? 0.15 : -0.15, 0.63, 2.78) : (tuk ? vec3(aSlot < 0.5 ? 0.03 : -0.03, 0.77, 1.5) : (moto ? vec3(0.0, 0.91, 0.64) : vec3(aSlot < 0.5 ? 0.58 : -0.58, 0.58, 2.36)));
+          col = (fly ? vec3(0.75, 0.9, 1.0) : vec3(1.0, 0.92, 0.78)) * smoothstep(-0.3, 0.4, facing) * (tuk ? 0.8 : moto ? (aSlot < 0.5 ? 1.0 : 0.0) : 1.1);
+          size = fly ? 1.2 : (tuk || moto ? 0.55 : 1.0);
         } else if (aSlot < 3.5) {
-          lp = fly ? vec3(aSlot < 2.5 ? 0.6 : -0.6, 0.63, -2.68) : vec3(aSlot < 2.5 ? 0.62 : -0.62, 0.66, -2.36);
-          col = (fly ? vec3(1.0, 0.25, 0.7) : vec3(1.0, 0.08, 0.14)) * smoothstep(-0.3, 0.4, -facing) * 0.9;
-          size = fly ? 1.0 : 0.8;
+          lp = fly ? vec3(aSlot < 2.5 ? 0.6 : -0.6, 0.63, -2.68) : (tuk ? vec3(aSlot < 2.5 ? 0.5 : -0.5, 0.78, -1.5) : (moto ? vec3(0.0, 0.66, -0.8) : vec3(aSlot < 2.5 ? 0.62 : -0.62, 0.66, -2.36)));
+          col = (fly ? vec3(1.0, 0.25, 0.7) : vec3(1.0, 0.08, 0.14)) * smoothstep(-0.3, 0.4, -facing) * (moto ? (aSlot < 2.5 ? 0.9 : 0.0) : 0.9);
+          size = fly ? 1.0 : moto ? 0.5 : 0.8;
         } else if (aSlot < 4.5) {
           if (fly) { lp = vec3(0.0, -0.1, -0.2); col = aNeon * 0.45; size = 4.5; }
           else { vMode = 1.0; col = vec3(1.0, 0.9, 0.75) * 0.32 * smoothstep(-0.6, 0.2, facing + 0.4); }
         } else if (aSlot < 5.5) {
           if (fly) { col = vec3(0.0); }
+          else if (tuk) { vMode = 4.0; col = aNeon * 0.3; }
+          else if (moto) { col = vec3(0.0); }
           else { vMode = 2.0; col = vec3(1.0, 0.1, 0.15) * 0.16; }
         } else {
           // head light beams made visible by the rain
           vMode = 3.0;
-          col = fly ? vec3(0.0) : vec3(1.0, 0.93, 0.8) * 0.055 * uRain * smoothstep(-0.2, 0.6, facing + 0.5);
+          col = fly ? vec3(0.0) : vec3(1.0, 0.93, 0.8) * (moto ? 0.04 : 0.055) * uRain * smoothstep(-0.2, 0.6, facing + 0.5);
         }
         // pools of light lie on the street: the mirrored view must not see them twice
-        if (uPass > 0.5 && (vMode > 0.5 && vMode < 2.5)) col = vec3(0.0);
+        if (uPass > 0.5 && (vMode > 0.5 && vMode < 2.5 || vMode > 3.5)) col = vec3(0.0);
         vec3 w;
         if (vMode < 0.5) {
           w = pos + rt * lp.x + up * lp.y + fwd * lp.z;
@@ -3757,17 +4036,19 @@ class WorldScene {
           mv.xy += aCorner * size;
           gl_Position = projectionMatrix * mv;
           col *= smoothstep(0.4, 2.0, -mv.z);
-        } else if (vMode < 2.5) {
+        } else if (vMode < 2.5 || vMode > 3.5) {
           float t = aCorner.y * 0.5 + 0.5;
-          vec3 l = vMode < 1.5 ? vec3(aCorner.x * mix(1.0, 3.4, t), 0.03, 2.3 + t * 15.0) : vec3(aCorner.x * 1.3, 0.03, -2.3 - t * 4.0);
+          float k = tuk ? 0.62 : moto ? 0.42 : 1.0;
+          vec3 l = vMode > 3.5 ? vec3(aCorner.x * 1.5, 0.03, mix(-2.0, 1.9, t)) : (vMode < 1.5 ? vec3(aCorner.x * mix(1.0, 3.4, t) * k, 0.03, (2.3 + t * 15.0) * k) : vec3(aCorner.x * 1.3, 0.03, -2.3 - t * 4.0));
           w = pos + rt * l.x + up * l.y + fwd * l.z;
           gl_Position = projectionMatrix * viewMatrix * vec4(w, 1.0);
         } else {
           float t = aCorner.y * 0.5 + 0.5;
-          vec3 st = pos + fwd * 2.3 + up * 0.6;
-          vec3 mid = st + fwd * (t * 20.0) - up * (t * 0.45);
+          vec3 st = pos + fwd * (tuk ? 1.5 : moto ? 0.65 : 2.3) + up * (tuk ? 0.77 : moto ? 0.91 : 0.6);
+          float kb = tuk ? 0.7 : moto ? 0.55 : 1.0;
+          vec3 mid = st + fwd * (t * 20.0 * kb) - up * (t * 0.45 * kb);
           vec3 sd = normalize(cross(fwd, normalize(mid - cameraPosition)));
-          w = mid + sd * aCorner.x * mix(0.5, 4.0, t);
+          w = mid + sd * aCorner.x * mix(0.5, 4.0, t) * kb;
           gl_Position = projectionMatrix * viewMatrix * vec4(w, 1.0);
         }
         vCol = col * (1.0 - fogAmt(w) * 0.8);
@@ -3777,6 +4058,7 @@ class WorldScene {
       void main(){
         float a;
         if (vMode < 0.5) { float r2 = dot(vC, vC); a = max(0.0, exp(-r2 * 5.0) - 0.007); }
+        else if (vMode > 3.5) { float t = vC.y * 0.5 + 0.5; a = sin(3.14159 * t) * exp(-vC.x * vC.x * 3.0); }
         else { float t = vC.y * 0.5 + 0.5; a = pow(1.0 - t, 1.6) * smoothstep(0.0, 0.08, t) * exp(-vC.x * vC.x * 2.2); }
         gl_FragColor = vec4(vCol * a, 1.0);
       }`;
@@ -3787,7 +4069,7 @@ class WorldScene {
       g.setAttribute('aSlot', new T.Float32BufferAttribute(gq.slot, 1));
       g.setIndex(gidx);
       const put = (name, n, f) => { const a = new Float32Array(list.length * n); list.forEach((c, i) => { const v = f(c); for (let k = 0; k < n; k++) a[i * n + k] = v[k]; }); g.setAttribute(name, new T.InstancedBufferAttribute(a, n)); };
-      put('aP0', 4, (c) => c.p0); put('aP1', 4, (c) => c.p1); put('aP2', 4, (c) => c.p2); put('aP3', 4, (c) => [c.seed, 0, 0, 0]);
+      put('aP0', 4, (c) => c.p0); put('aP1', 4, (c) => c.p1); put('aP2', 4, (c) => c.p2); put('aP3', 4, (c) => [c.seed, c.tuk || 0, 0, 0]);
       put('aNeon', 3, (c) => c.neon || [0, 0, 0]);
       g.instanceCount = list.length;
       return g;
@@ -3795,9 +4077,49 @@ class WorldScene {
     const glowMat = this.mat(gvs, gfs, null, { blend: 'add', side: T.DoubleSide });
     this.add(mkGlow(ground), glowMat, 6);
     this.add(mkGlow(air), glowMat, 6);
+    if (tuk.length) this.add(mkGlow(tuk), glowMat, 6);
+    if (moto.length) this.add(mkGlow(moto), glowMat, 6);
   }
 
-  /* ---------- the monorail train ---------- */
+  /* ---------- the wat: a golden chedi covered in mosaic, lit from below ---------- */
+  buildTemple() {
+    const T = this.T, tp = this.plan.temple;
+    if (!tp) return;
+    const prof = [[26, 0], [26, 2.5], [22.5, 2.5], [22.5, 5], [19, 5], [19, 7.5], [15.5, 7.5], [15.5, 9], [16.6, 12], [17, 16], [16.2, 21], [14, 26], [10.5, 30.5], [6.5, 33.5],
+      [5.2, 34.5], [5.2, 38], [6, 38.4], [4.2, 39], [3.6, 44], [3, 48], [3.3, 48.6], [2.5, 49.2], [2.1, 54], [2.35, 54.5], [1.6, 55], [1.25, 60], [0.8, 66], [0.4, 71], [0.04, 75]];
+    const geo = new T.LatheGeometry(prof.map(([r, y]) => new T.Vector2(r, y)), this.lite ? 32 : 56);
+    const vs = `varying vec3 vW; varying vec3 vN; varying vec3 vL; void main(){ vL = position; vN = normalize(mat3(modelMatrix) * normal); vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`;
+    const fs = `${WGL.hash}${WGL.fog} uniform float uTime; uniform float uHDR; varying vec3 vW; varying vec3 vN; varying vec3 vL;
+      void main(){
+        vec3 N = normalize(vN), V = normalize(cameraPosition - vW);
+        float h = vL.y / 75.0;
+        float flood = mix(1.0, 0.3, smoothstep(0.0, 1.0, h)) * (0.55 + 0.45 * clamp(0.75 - N.y * 0.6, 0.0, 1.0));
+        vec3 col;
+        if (vL.y < 8.9) {
+          // white terraces
+          col = vec3(0.42, 0.37, 0.31) * flood + vec3(1.0, 0.6, 0.3) * 0.06;
+        } else {
+          // gold mosaic: every tile catches the light a little differently, a few of them sparkle
+          vec2 cell = floor(vec2(atan(vL.z, vL.x) * 44.0, vL.y * 3.0));
+          float tile = h21(cell);
+          float tw = step(0.985, h21(cell + floor(uTime * 2.0 + tile * 7.0)));
+          vec3 gold = vec3(1.0, 0.64, 0.2);
+          float rim = pow(1.0 - max(dot(N, V), 0.0), 3.0);
+          // the bell and the spire are made of stacked rings: thin dark grooves between them
+          float ring = 1.0 - 0.45 * (1.0 - smoothstep(0.0, 0.12, abs(fract(vL.y / 1.35) - 0.5) * 2.0 - 0.75));
+          col = gold * (0.16 + 0.8 * flood) * (0.75 + 0.5 * tile) * ring * (1.0 + 0.3 * uHDR);
+          col += gold * rim * 0.28 + vec3(1.0, 0.9, 0.7) * tw * (1.2 + uHDR);
+        }
+        float fA = fogAmt(vW);
+        gl_FragColor = vec4(mix(col, fogCol(vW), fA * 0.85), 1.0);
+      }`;
+    const mat = this.mat(vs, fs);
+    const put = (x, z, s) => { const m = new T.Mesh(geo, mat); m.position.set(x, 0, z); m.scale.set(s, s, s); m.updateMatrix(); m.updateMatrixWorld(); m.matrixAutoUpdate = false; m.frustumCulled = false; this.scene.add(m); return m; };
+    put(tp.x, tp.z, tp.scale);
+    for (const [dx, dz] of tp.small) put(tp.x + dx, tp.z + dz, tp.scale * 0.3);
+  }
+
+  /* ---------- the skytrain ---------- */
   buildTrain() {
     const T = this.T, tr = this.plan.train;
     const pos = [], nor = [], aL = [], idx = [];
@@ -3815,16 +4137,20 @@ class WorldScene {
         idx.push(vi, vi + 1, vi + 2, vi, vi + 2, vi + 3); vi += 4;
       }
     };
-    for (let i = 0; i < 6; i++) box(-i * 15.2 - 14.4, -i * 15.2, 0, 3.3, -1.5, 1.5);
+    for (let i = 0; i < 4; i++) box(-i * 22.3 - 21.5, -i * 22.3, 0, 3.7, -1.55, 1.55);
     const vs = `varying vec3 vN; varying vec2 vL; varying vec3 vW; attribute vec2 aL;
       void main(){ vN = normal; vL = aL; vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`;
     const fs = `${WGL.hash}${WGL.fog} uniform float uTime; varying vec3 vN; varying vec2 vL; varying vec3 vW;
       void main(){
-        vec3 col = vec3(0.07, 0.065, 0.12);
+        // a light grey body, a band of lit windows, a green line beneath them; the roof is darker
+        vec3 col = vec3(0.16, 0.17, 0.2) * (vN.y > 0.5 ? 0.45 : 1.0);
+        col += vec3(1.0, 0.56, 0.22) * 0.04 + mix(PINK, CYAN, 0.5 + 0.5 * sin(vW.x * 0.013)) * 0.03;
         if (abs(vN.y) < 0.5) {
-          float win = step(0.42, vL.y) * step(vL.y, 0.8) * step(0.18, fract(vL.x / 1.5)) * step(fract(vL.x / 1.5), 0.86);
-          col += vec3(0.95, 0.9, 1.0) * win * (0.75 + 0.25 * h21(floor(vec2(vL.x / 1.5, vW.x * 0.01))));
-          col += PINK * (1.0 - smoothstep(0.0, 0.04, abs(vL.y - 0.28))) * 1.2;
+          float win = step(0.4, vL.y) * step(vL.y, 0.74) * step(0.1, fract(vL.x / 2.4)) * step(fract(vL.x / 2.4), 0.9);
+          float door = step(0.47, fract(vL.x / 5.4)) * step(fract(vL.x / 5.4), 0.6) * step(vL.y, 0.8) * step(0.08, vL.y);
+          col = mix(col, vec3(0.05, 0.05, 0.07), door * 0.6);
+          col += vec3(0.9, 0.95, 1.0) * win * (0.7 + 0.3 * h21(floor(vec2(vL.x / 2.4, vW.x * 0.01))));
+          col = mix(col, vec3(0.1, 0.62, 0.28), (1.0 - smoothstep(0.0, 0.03, abs(vL.y - 0.32))) * 0.9);
         }
         float fA = fogAmt(vW);
         gl_FragColor = vec4(mix(col, fogCol(vW), fA * 0.8), 1.0);
@@ -4157,10 +4483,11 @@ class WorldScene {
     }
   }
 }
-function smoothstep01(a, b, x) { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
 
 /* 30_street.js */
 /* ---------- street level scene (profile section): drawn in a fixed 1440x900 frame, scaled to the panel ---------- */
+// a Bangkok soi: Thai shop signs, a Chinatown gold shop, a noodle stall
+const STREET_TH = 'บาร์ ฝน 24 ชม. นวด ไทย ลักดาร์ ส้ม ตำ';
 class StreetScene {
   constructor(cv) { this.cv = cv; this.g = cv.getContext('2d'); this.interval = 40; }
 
@@ -4309,19 +4636,19 @@ class StreetScene {
       for (let q = -2; q <= 2; q++) { x.beginPath(); x.ellipse(lx + 13, ly + 24 + q * 7, 14 - Math.abs(q) * 2, 2, 0, 0, TAU); x.stroke(); }
       x.fillStyle = '#2a1430'; x.fillRect(lx + 7, ly, 12, 4); x.fillRect(lx + 7, ly + 44, 12, 4);
     }
-    // kanji on the noren
-    x.fillStyle = '#f4f1ff'; x.font = `26px ${JP}`; x.textAlign = 'center'; x.textBaseline = 'middle';
-    x.fillText('麺', 95, 584); x.fillText('屋', 175, 584);
+    // the stall's name on the noren: som tam
+    x.fillStyle = '#f4f1ff'; x.font = `600 24px ${THF}`; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.fillText('ส้ม', 95, 586); x.fillText('ตำ', 175, 586);
     this.back = back;
 
     this.signs = [
-      { kind: 'v', text: '居酒屋', x: 226, y: 248, w: 52, h: 178, color: '#fff3c4', glow: '#ffd23f', flick: 0 },
-      { kind: 'v', text: 'ラーメン', x: 846, y: 214, w: 54, h: 226, color: '#b4f3ff', glow: '#2fb8ff', flick: 0 },
-      { kind: 'h', text: 'BAR ゆき', x: 372, y: 466, w: 156, h: 48, color: '#ffc2f0', glow: '#ff3fc8', flick: 0 },
-      { kind: 'band', text: '24H', x: 626, y: 456, w: 258, h: 46, color: '#ffffff', glow: '#8f7bff', flick: 0 },
-      { kind: 'v', text: 'カラオケ', x: 1104, y: 200, w: 56, h: 232, color: '#ff8fe6', glow: '#b45cff', flick: 0 },
-      { kind: 'box', text: '夜', x: 934, y: 214, w: 104, h: 104, color: '#ffffff', glow: '#a77bff', flick: 1 },
-      { kind: 'h', text: 'ラクダル', x: 1206, y: 340, w: 214, h: 60, color: '#d4bbff', glow: '#8b5cff', flick: 0 },
+      { kind: 'v', text: '金行', x: 226, y: 262, w: 56, h: 150, color: '#fff3c4', glow: '#ffd23f', flick: 0 },
+      { kind: 'v', text: '酒家', x: 846, y: 230, w: 56, h: 150, color: '#b4f3ff', glow: '#2fb8ff', flick: 0 },
+      { kind: 'h', text: 'บาร์ ฝน', x: 372, y: 462, w: 156, h: 54, color: '#ffc2f0', glow: '#ff3fc8', flick: 0 },
+      { kind: 'band', text: '24 ชม.', x: 626, y: 456, w: 258, h: 46, color: '#ffffff', glow: '#8f7bff', flick: 0 },
+      { kind: 'v', text: 'นวด|ไทย', x: 1092, y: 206, w: 80, h: 200, color: '#ff8fe6', glow: '#b45cff', flick: 0 },
+      { kind: 'box', text: '福', x: 934, y: 214, w: 104, h: 104, color: '#ffffff', glow: '#ff4d6d', flick: 1 },
+      { kind: 'h', text: 'ลักดาร์', x: 1206, y: 336, w: 214, h: 66, color: '#d4bbff', glow: '#8b5cff', flick: 0 },
       { kind: 'h', text: 'OPEN', x: 414, y: 524, w: 72, h: 14, color: '#c8fff4', glow: '#3fe0c5', flick: 2, small: true },
     ];
     this.buildNeon(k);
@@ -4345,7 +4672,7 @@ class StreetScene {
 
   buildNeon(k) {
     const W = this.W, H = this.H;
-    const font = (px) => `${px}px ${JP}`;
+    const font = (px, t) => (t && isThai(t) ? `600 ${px}px ${THF}` : `${px}px ${JP}`);
     this.signCanvases = this.signs.map((s) => {
       const pad = 40, sc = mkCanvas((s.w + pad * 2) * k, (s.h + pad * 2) * k), q = sc.getContext('2d');
       q.setTransform(k, 0, 0, k, 0, 0); q.translate(pad, pad);
@@ -4356,7 +4683,14 @@ class StreetScene {
       if (s.kind !== 'band') q.strokeRect(4, 4, s.w - 8, s.h - 8);
       q.fillStyle = s.kind === 'band' ? '#3d2fb0' : s.color;
       q.textAlign = 'center'; q.textBaseline = 'middle';
-      if (s.kind === 'v') {
+      if (s.kind === 'v' && isThai(s.text)) {
+        // Thai on a blade: one word per line, never split inside a word
+        const lines = s.text.split('|'), step = (s.h - 16) / lines.length;
+        q.font = font(100, s.text);
+        const widest = Math.max(...lines.map((l) => q.measureText(l).width)) || 1;
+        q.font = font(Math.min(step * 0.62, ((s.w - 18) / widest) * 100), s.text);
+        lines.forEach((l, i) => { q.fillText(l, s.w / 2, 8 + step * (i + 0.5)); q.fillText(l, s.w / 2, 8 + step * (i + 0.5)); });
+      } else if (s.kind === 'v') {
         const chars = Array.from(s.text), step = (s.h - 16) / chars.length;
         q.font = font(Math.min(s.w - 14, step - 4));
         chars.forEach((ch, i) => { q.fillText(ch, s.w / 2, 8 + step * (i + 0.5)); q.fillText(ch, s.w / 2, 8 + step * (i + 0.5)); });
@@ -4364,7 +4698,7 @@ class StreetScene {
         q.font = font(s.h - 26);
         q.fillText(s.text, s.w / 2, s.h / 2 + 3); q.fillText(s.text, s.w / 2, s.h / 2 + 3);
       } else {
-        q.font = font(s.small ? 11 : s.kind === 'band' ? 26 : Math.min(s.h - 20, 36));
+        q.font = font(s.small ? 11 : s.kind === 'band' ? 26 : Math.min(s.h - 20, 36), s.text);
         q.fillText(s.text, s.w / 2, s.h / 2 + (s.kind === 'band' ? -3 : 2));
         if (!s.small) q.fillText(s.text, s.w / 2, s.h / 2 + 2);
       }
@@ -4714,7 +5048,7 @@ const trainSvg = (L) => `<g data-train="${L.id}"><circle class="train-glow" r="1
 
 function metroWide() {
   let html = `${METRO_DEFS}<rect width="1040" height="540" fill="url(#mdots)"/>`;
-  html += `<rect class="cart" x="112" y="196" width="258" height="146" rx="6"/><text class="cart-t" x="132" y="224" ${bi({ fr: 'PLAN DU RÉSEAU', en: 'NETWORK MAP' })}>PLAN DU RÉSEAU</text><text class="cart-s" x="132" y="242">ラクダル線 · 2026</text>`;
+  html += `<rect class="cart" x="112" y="196" width="258" height="146" rx="6"/><text class="cart-t" x="132" y="224" ${bi({ fr: 'PLAN DU RÉSEAU', en: 'NETWORK MAP' })}>PLAN DU RÉSEAU</text><text class="cart-s" x="132" y="242">สายลักดาร์ · 2026</text>`;
   METRO.forEach((L, i) => { const y = 266 + i * 20; html += `<rect x="132" y="${y - 4}" width="22" height="5" rx="2.5" fill="${L.col}"/><text class="cart-l" x="164" y="${y + 2}" ${bi(L.name)}>${L.name.fr}</text>`; });
   for (const L of METRO) html += lineSvg(`M${L.pts.map((p) => p.join(' ')).join(' L')}`, L.col, L.id);
   for (const L of METRO) for (const [name, x, y, pos] of L.st) html += `<circle class="st" cx="${x}" cy="${y}" r="8" stroke="${L.col}"/><text class="lbl" x="${x}" y="${pos === 'a' ? y - 18 : y + 31}" text-anchor="middle" ${stAttr(name)}>${stName(name)}</text>`;
@@ -5049,12 +5383,12 @@ window.__lkSound = Sound;
 // camera keyframes, one per beat of the story: x, y, z, yaw, pitch, roll, fov
 const KEYS = [
   [0, 5.5, 46, 0, 0.06, 0, 58],            // 0 welcome, at the entrance of the avenue
-  [-1.5, 7, -40, 0.16, 0.14, 0, 58],       // 1 信号, the signal
-  [-10, 8, -300, -0.5, 0.42, 0, 60],       // 2 登竜門, the waterfall and the koi
-  [10, 34, -522, 1.0, 0.1, 0, 58],         // 3 硝子, glass towers and the plant KPI screen
-  [0, 12, -606, 0, 0.42, 0, 60],           // 4 感情, the SentimentAI hologram
+  [-1.5, 7, -40, 0.16, 0.14, 0, 58],       // 1 สัญญาณ, the signal
+  [-10, 8, -300, -0.5, 0.42, 0, 60],       // 2 น้ำตก, the waterfall and the koi
+  [10, 34, -522, 1.0, 0.1, 0, 58],         // 3 กระจก, glass towers and the plant KPI screen
+  [0, 12, -606, 0, 0.42, 0, 60],           // 4 ความรู้สึก, the SentimentAI hologram
   [0, 3.4, -790, 0, 0.06, 0, 62],          // 5 off screen: boxing, books, animals
-  [0, 9, -940, 0, 0.3, 0, 58],             // 6 未来, the plaza gate
+  [0, 9, -940, 0, 0.3, 0, 58],             // 6 อนาคต, the plaza gate
   [0, 48, -1060, 0, 0.5, 0, 60],           // 7 home: the tower with the name on it
   [0, 185, -1062, Math.PI, -0.3, 0, 58],   // 8 turn around, the road behind
 ];
@@ -5316,7 +5650,9 @@ class Journey {
 function fontsReady() {
   if (!document.fonts || !document.fonts.load) return Promise.resolve();
   const loads = [
-    ['40px "Dela Gothic One"', 'ラクダルネオン電脳酒場夜雪光夢愛街カラオケラーメンホテルバー雪見ゲームゆき麺屋居酒屋' + WORLD_JP],
+    ['40px "Dela Gothic One"', '金行福茶酒家飯店夜市按摩龍門光夢愛街雨' + WORLD_JP],
+    ['600 40px "Kanit"', WORLD_TH + ' ' + (typeof STREET_TH === 'string' ? STREET_TH : '')],
+    ['700 20px "Chakra Petch"', 'โลกของลักดาร์ โปรไฟล์ ประสบการณ์ โปรเจกต์ เทคโนโลยี ติดต่อ สวัสดี สัญญาณ น้ำตก กระจก ความรู้สึก นอกจอ อนาคต เส้นทาง ซอย'],
     ['40px "Dela Gothic One"', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 •·'],
     ['40px "Tilt Neon"', 'HOTEL NEURAL BAR OPEN LAKDAR KARABADJA ' + WTXT.h.join(' ')],
     ['600 20px "Chakra Petch"', 'MACHINE LEARNING · MLOPS · DATA'],
